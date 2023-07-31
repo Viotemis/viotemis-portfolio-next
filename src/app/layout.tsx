@@ -1,9 +1,9 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { Raleway } from "next/font/google";
 import "./globals.css";
-import { Montserrat } from "next/font/google";
 
-const inter = Montserrat({ subsets: ["latin"] });
+const raleway = Raleway({ display: "swap", subsets: ["latin"] });
 
 export const metadata = {
   title: "Bowang Lan",
@@ -18,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + " flex flex-col items-stretch"}>
+      <body
+        className={raleway.className + " grid h-screen"}
+        style={{
+          gridTemplateRows: "auto 1fr auto",
+        }}
+      >
         <Header />
         {children}
         <Footer />
