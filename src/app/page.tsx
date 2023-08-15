@@ -2,6 +2,7 @@ import { SocialMedia } from "@/components/SocialMedia";
 import Image from "next/image";
 import { client } from "../../sanity/lib/client";
 import { groq } from "next-sanity";
+import Button from "@/components/ui/Button";
 
 function getProjects(): Promise<Project[]> {
   return client.fetch(
@@ -23,9 +24,7 @@ export default async function Home() {
           <span className="text-center">
             A full-stack developer, UI designer, and data scientist
           </span>
-          <div className="fcenter">
-            <div className="mt-3 text-base button-outline">View My Work</div>
-          </div>
+          <Button>View My Work</Button>
           <div className="pt-4">
             <SocialMedia />
           </div>
