@@ -9,7 +9,6 @@ export default async function BlogItemPage({
   const { slug } = params;
 
   const blog = await getOnePost(slug);
-  console.log("blog", blog);
 
   if (!blog) {
     return <div>404</div>;
