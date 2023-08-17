@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Particles from "@/components/Particles";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           gridTemplateRows: "auto 1fr auto",
         }}
       >
+        <Particles />
         <Header />
         {children}
         <Footer />

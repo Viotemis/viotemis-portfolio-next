@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Projects from "@/components/pages/Projects";
+import DefaultLayout from "@/components/layout/DefaultLayout";
 
 export default function ProjectsPage() {
   return (
-    <div>Project Page</div>
-  )
+    <DefaultLayout>
+      <Projects />
+    </DefaultLayout>
+  );
 }
