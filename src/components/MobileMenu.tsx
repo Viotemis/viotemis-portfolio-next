@@ -2,7 +2,7 @@
 
 import { motion, useCycle } from "framer-motion";
 import React from "react";
-import { IconContainer, Path } from "./Icon";
+import { IconContainer, Path } from "./ui/Icon";
 
 export const MenuToggle = ({
   toggle,

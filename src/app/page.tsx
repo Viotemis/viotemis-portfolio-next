@@ -1,7 +1,18 @@
 import { SocialMedia } from "@/components/SocialMedia";
 import Image from "next/image";
+import { client } from "../../sanity/lib/client";
+import { groq } from "next-sanity";
+import Button from "@/components/ui/Button";
 
-export default function Home() {
+function getProjects(): Promise<Project[]> {
+  return client.fetch(
+    groq`*[_type == "project"]`
+  );
+}
+
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <main className="grid p-24">
       <section className="fcenter">
@@ -10,10 +21,10 @@ export default function Home() {
             Hello, {"I'm "}
             <span className="font-bold h1-gradient">Bowang Lan</span>
           </span>
-          <span className="text-center">A full-stack developer, UI designer, and data scientist</span>
-          <div className="fcenter">
-            <div className="mt-3 text-base button-outline">View My Work</div>
-          </div>
+          <span className="text-center">
+            A full-stack developer, UI designer, and data scientist
+          </span>
+          <Button>View My Work</Button>
           <div className="pt-4">
             <SocialMedia />
           </div>
