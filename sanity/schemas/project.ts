@@ -25,6 +25,11 @@ export default defineType({
       type: "url",
     }),
     defineField({
+      name: "githubUrl",
+      title: "Github URL",
+      type: "url",
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",

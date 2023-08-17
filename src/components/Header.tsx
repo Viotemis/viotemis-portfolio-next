@@ -74,7 +74,7 @@ export default function Header() {
 
   return (
     <header
-      className="relative z-50 flex items-center justify-between h-[var(--h-header)] px-page trans"
+      className="relative z-10 flex items-center justify-between h-[var(--h-header)] px-page trans"
       style={{
         display: pathname === "/admin" ? "none" : "flex",
       }}
@@ -90,7 +90,7 @@ export default function Header() {
       <div className="flex-1"></div>
       <div>
         <nav
-          className="relative flex gap-2"
+          className="relative hidden gap-2 md:flex"
           onMouseEnter={() => {
             hoverBox.current!.animate(
               {

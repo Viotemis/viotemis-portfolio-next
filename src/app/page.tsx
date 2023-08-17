@@ -1,35 +1,25 @@
 import { SocialMedia } from "@/components/SocialMedia";
-import Image from "next/image";
-import { client } from "../../sanity/lib/client";
-import { groq } from "next-sanity";
 import Button from "@/components/ui/Button";
-
-function getProjects(): Promise<Project[]> {
-  return client.fetch(
-    groq`*[_type == "project"]`
-  );
-}
+import DefaultLayout from "@/components/layout/DefaultLayout";
 
 export default async function Home() {
-  const projects = await getProjects();
-
   return (
-    <main className="grid p-24">
+    <DefaultLayout>
       <section className="fcenter">
-        <div className="flex flex-col items-center space-y-2 text-3xl tracking-wider md:text-4xl">
-          <span>
+        <div className="flex flex-col items-center space-y-2 tracking-wider md:space-y-4 md:text-4xl">
+          <div className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem]">
             Hello, {"I'm "}
             <span className="font-bold h1-gradient">Bowang Lan</span>
-          </span>
-          <span className="text-center">
+          </div>
+          <div className="text-center lg:pt-3 sm:text-xl md:text-2xl lg:text-3xl">
             A full-stack developer, UI designer, and data scientist
-          </span>
+          </div>
           <Button>View My Work</Button>
           <div className="pt-4">
             <SocialMedia />
           </div>
         </div>
       </section>
-    </main>
+    </DefaultLayout>
   );
 }

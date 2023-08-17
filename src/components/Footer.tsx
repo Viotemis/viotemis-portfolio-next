@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative z-0 py-6 px-page fcenter"
+      className="relative z-10 py-6 px-page fcenter"
       style={{
         display: pathname === "/admin" ? "none" : "flex",
       }}
