@@ -7,3 +7,5 @@ export const COLOR_BACKGROUND = "rgb(7, 9, 13)";
 export const COLOR_PRIMARY = "rgb(52, 93, 225)";
 export const COLOR_SECONDARY = "rgb(18, 27, 59)";
 export const COLOR_ACCENT = "rgb(76, 235, 156)";
+
+export const SANITY_CDN = "https://cdn.sanity.io"

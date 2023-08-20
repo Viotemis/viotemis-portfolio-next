@@ -1,10 +1,25 @@
+type Icon = "external" | "github";
+
+interface Link {
+  name: string;
+  href: string;
+  icon: Icon;
+}
+
+interface SanityImage {
+  asset: any;
+}
+
+interface Tag {
+  slug: string;
+  name: string;
+}
+
 interface Project {
-  _id: string;
-  _type: string;
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
   title: string;
   slug: string;
-  url: string;
+  websiteUrl?: string;
+  githubUrl?: string;
+  links: Link[];
+  tags: Tag[];
 }

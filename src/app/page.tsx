@@ -1,5 +1,5 @@
 import { SocialMedia } from "@/components/SocialMedia";
-import Button from "@/components/ui/Button";
+import { ContactMeButton } from "@/components/ui/Button";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 
 export default async function Home() {
@@ -14,7 +14,7 @@ export default async function Home() {
           <div className="text-center lg:pt-3 sm:text-xl md:text-2xl lg:text-3xl">
             A full-stack developer, UI designer, and data scientist
           </div>
-          <Button>View My Work</Button>
+          <ContactMeButton />
           <div className="pt-4">
             <SocialMedia />
           </div>

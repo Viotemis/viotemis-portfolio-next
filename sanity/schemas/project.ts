@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   name: "project",
@@ -15,13 +15,33 @@ export default defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
     }),
     defineField({
-      name: "url",
-      title: "URL",
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tag" }],
+        },
+      ],
+    }),
+    defineField({
+      name: "dateRange",
+      title: "Date Range",
+      type: "object",
+      fields: [
+        { name: "start", type: "date", title: "Start" },
+        { name: "end", type: "date", title: "End" },
+      ],
+    }),
+    defineField({
+      name: "websiteUrl",
+      title: "Website URL",
       type: "url",
     }),
     defineField({

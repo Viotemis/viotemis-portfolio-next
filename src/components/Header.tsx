@@ -34,10 +34,10 @@ const navItems = [
     text: "Projects",
     href: "/projects",
   },
-  {
-    text: "Blogs",
-    href: "/blogs",
-  },
+  // {
+  //   text: "Blogs",
+  //   href: "/blogs",
+  // },
 ];
 
 const animateOptions = {
@@ -76,7 +76,7 @@ export default function Header() {
     <header
       className="relative z-10 flex items-center justify-between h-[var(--h-header)] px-page trans"
       style={{
-        display: pathname === "/admin" ? "none" : "flex",
+        display: pathname.startsWith("/admin") ? "none" : "flex",
       }}
     >
       <span
@@ -130,7 +130,9 @@ export default function Header() {
               {...item}
               key={i}
               className={
-                item.href === pathname ? "bg-blue-500/70" : "text-slate-400 hover:text-white"
+                item.href === pathname
+                  ? "bg-blue-500/70"
+                  : "text-slate-400 hover:text-white"
               }
               onMouseEnter={(e) => {
                 hoverBox.current!.animate(

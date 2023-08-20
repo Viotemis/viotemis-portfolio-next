@@ -1,11 +1,14 @@
 import React from "react";
 import Projects from "@/components/pages/Projects";
 import DefaultLayout from "@/components/layout/DefaultLayout";
+import { getProjects } from "../../../sanity/lib/api";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <DefaultLayout>
-      <Projects />
+      <Projects projects={projects} />
     </DefaultLayout>
   );
 }

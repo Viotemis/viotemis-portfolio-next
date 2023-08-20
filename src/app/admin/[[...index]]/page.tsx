@@ -15,7 +15,6 @@ import config from "../../../../sanity.config";
 export default function StudioPage() {
   return (
     <>
-      <div className="fixed">Back to Home</div>
       <NextStudio config={config} />
     </>
   );
