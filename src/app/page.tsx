@@ -12,7 +12,7 @@ export default async function Home() {
             <span className="font-bold h1-gradient">Bowang Lan</span>
           </div>
           <div className="text-center lg:pt-3 sm:text-xl md:text-2xl lg:text-3xl text-slate-300">
-            A full-stack developer, data scientest, and UI/UX designer
+            A full-stack developer, data scientest
           </div>
           <ContactMeButton />
           <div className="pt-4">
