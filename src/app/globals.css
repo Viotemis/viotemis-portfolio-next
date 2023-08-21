@@ -112,3 +112,43 @@ body {
     padding-right: 2rem;
   }
 }
+
+/* Scrollbar */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--primary-400, 0.5)) transparent;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(var(--primary-400) / 0.4);
+
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(var(--primary-400) / 0.6);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgba(var(--primary-400) / 0.7);
+}
