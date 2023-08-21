@@ -2,6 +2,7 @@
 
 import React from "react";
 import { EMAIL_URL } from "@/constants";
+import va from "@vercel/analytics";
 
 export default function Button({
   children,
@@ -19,6 +20,7 @@ export function ContactMeButton() {
   return (
     <Button
       onClick={() => {
+        // va.track("ClickContactMe");
         document.location.href = EMAIL_URL;
       }}
     >
