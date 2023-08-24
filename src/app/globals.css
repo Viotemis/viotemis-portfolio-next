@@ -7,6 +7,7 @@
   --bg-main: #ededed;
   --h-header: 80px;
   --h-mobile-menu: calc(100vh - var(--h-header));
+  --h-main: calc(100vh - var(--h-header));
 
   /* --text: 239 242 250;
   --background: 0 4 15;
@@ -82,7 +83,7 @@ body {
   padding-right: 1rem;
 }
 
-.h1-gradient {
+.primary-gradient {
   background: linear-gradient(to right,
       rgb(var(--primary-500)),
       var(--accent));
@@ -90,6 +91,16 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.primary-gradient-2 {
+  background: linear-gradient(to right,
+      rgb(var(--primary-400)),
+      var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 .button-outline {
   border: 2px solid var(--text);
