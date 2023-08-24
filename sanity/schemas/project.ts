@@ -20,6 +20,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: "showOnResume",
+      title: "Show on Resume",
+      type: "boolean",
+    }),
+    defineField({
       name: "tags",
       title: "Tags",
       type: "array",
@@ -37,6 +42,7 @@ export default defineType({
       fields: [
         { name: "start", type: "date", title: "Start" },
         { name: "end", type: "date", title: "End" },
+        { name: "ongoing", type: "boolean", title: "Ongoing" },
       ],
     }),
     defineField({
