@@ -5,7 +5,7 @@ const SANITY_SERVER =
   "https://nq1vjp0w.api.sanity.io/v2023-08-13/data/query/portfolio-db?query=";
 
 const sanity_fetch = (query: string) => {
-  console.log("fetching sanity", SANITY_SERVER + query);
+  // console.log("fetching sanity", SANITY_SERVER + query);
   return fetch(SANITY_SERVER + query, { next: { revalidate: 1 } })
     .then((res) => res.json())
     .then((res) => res.result);
