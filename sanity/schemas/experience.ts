@@ -1,10 +1,15 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "project",
-  title: "Project",
+  name: "experience",
+  title: "Experience",
   type: "document",
   fields: [
+    defineField({
+      name: "organization",
+      title: "Organization",
+      type: "string",
+    }),
     defineField({
       name: "title",
       title: "Title",
@@ -25,18 +30,6 @@ export default defineType({
       type: "boolean",
     }),
     defineField({
-      name: "status",
-      title: "Status",
-      type: "string",
-      options: {
-        list: [
-          { title: "In Ideation", value: "ideation" },
-          { title: "Developing", value: "developing" },
-          { title: "Deployed", value: "deployed" },
-        ],
-      },
-    }),
-    defineField({
       name: "tags",
       title: "Tags",
       type: "array",
@@ -55,29 +48,6 @@ export default defineType({
         { name: "start", type: "date", title: "Start" },
         { name: "end", type: "date", title: "End" },
         { name: "ongoing", type: "boolean", title: "Ongoing" },
-      ],
-    }),
-    defineField({
-      name: "websiteUrl",
-      title: "Website URL",
-      type: "url",
-    }),
-    defineField({
-      name: "githubUrl",
-      title: "Github URL",
-      type: "url",
-    }),
-    defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
       ],
     }),
     defineField({

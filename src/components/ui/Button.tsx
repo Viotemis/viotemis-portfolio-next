@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { EMAIL_URL } from "@/constants";
+import { EMAIL_URL, RESUME_URL } from "@/constants";
 import va from "@vercel/analytics";
 
 export default function Button({
@@ -28,3 +28,17 @@ export function ContactMeButton() {
     </Button>
   );
 }
+
+export function DownloadResumeButton() {
+  return (
+    <Button
+      onClick={() => {
+        // va.track("ClickContactMe");
+        window.open(RESUME_URL, "_blank");
+      }}
+    >
+      Download My Resume
+    </Button>
+  );
+}
+

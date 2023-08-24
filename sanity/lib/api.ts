@@ -29,8 +29,10 @@ export function getProjects(): Promise<Project[]> {
   return sanity_fetch(`*[_type == "project"]{
     title,
     "slug": slug.current,
+    description,
     websiteUrl,
     githubUrl,
-    tags[]-> { name, icon, "slug": slug.current },
-  }`);
+    dateRange,
+    tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
+  } | order(dateRange.start desc)`);
 }

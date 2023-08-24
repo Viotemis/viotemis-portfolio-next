@@ -1,5 +1,5 @@
 import { SocialMedia } from "@/components/SocialMedia";
-import { ContactMeButton } from "@/components/ui/Button";
+import { ContactMeButton, DownloadResumeButton } from "@/components/ui/Button";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import { ABOUT_ME_TEXT } from "@/constants";
 
@@ -13,12 +13,15 @@ export default async function Home() {
             <span className="font-bold primary-gradient">Bowang Lan</span>
           </h1>
           <div className="text-center lg:pt-3 sm:text-xl md:text-2xl text-slate-300">
-            A full-stack developer, and data scientist
+            A full-stack developer, data scientist
           </div>
           <div className="text-base italic font-bold text-center lg:text-lg primary-gradient-2">
             Actively looking for full-time SDE positions starting in June 2023!
           </div>
-          <ContactMeButton />
+          <div className="flex items-center md:gap-4">
+            {/* <ContactMeButton /> */}
+            <DownloadResumeButton />
+          </div>
           <div className="pt-4">
             <SocialMedia />
           </div>
@@ -28,9 +31,11 @@ export default async function Home() {
         <h2 className="py-10 text-4xl font-medium text-blue-200">About Me</h2>
         <div className="max-w-[600px] text-center">
           {ABOUT_ME_TEXT.map((t, i) => (
-            <p key={i} className="mb-6 leading-8">
-              {t}
-            </p>
+            <p
+              key={i}
+              className="mb-6 leading-8"
+              dangerouslySetInnerHTML={{ __html: t }}
+            ></p>
           ))}
         </div>
       </section>

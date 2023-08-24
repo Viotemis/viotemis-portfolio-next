@@ -13,13 +13,20 @@ interface SanityImage {
 interface Tag {
   slug: string;
   name: string;
+  iconFileName?: string;
+  iconScale?: number;
 }
 
 interface Project {
   title: string;
   slug: string;
+  description: string;
   websiteUrl?: string;
   githubUrl?: string;
-  links: Link[];
+  dateRange: {
+    start: string;
+    end?: string;
+    ongoing?: boolean;
+  };
   tags: Tag[];
 }

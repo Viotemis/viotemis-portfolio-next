@@ -14,8 +14,8 @@ import config from "../../../../sanity.config";
 
 export default function StudioPage() {
   return (
-    <>
+    <div className="z-10">
       <NextStudio config={config} />
-    </>
+    </div>
   );
 }

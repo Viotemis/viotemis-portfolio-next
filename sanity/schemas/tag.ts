@@ -16,6 +16,16 @@ export default defineType({
       type: "text",
     }),
     defineField({
+      name: "iconFileName",
+      title: "Icon File Name",
+      type: "string",
+    }),
+    defineField({
+      name: "iconScale",
+      title: "Icon Scale",
+      type: "number",
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
