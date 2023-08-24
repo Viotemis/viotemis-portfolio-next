@@ -24,7 +24,9 @@ function ProjectItem({ project }: { project: Project }) {
     <div className="flex flex-col h-56 px-6 py-6 border hover:bg-blue-300/20 trans border-slate-400/50 hover:border-blue-500/70">
       {/* Title */}
       <div className="flex items-center flex-none mb-2 md:gap-2">
-        <span className="text-xl font-medium truncate md:text-xl lg:text-2xl">{project.title}</span>
+        <span className="text-xl font-medium truncate md:text-xl lg:text-2xl">
+          {project.title}
+        </span>
         {project.websiteUrl && (
           <a href={project.websiteUrl} target="_blank">
             <ArrowTopRightOnSquareIcon className="w-5 h-5 ml-3 cursor-pointer" />
@@ -86,15 +88,20 @@ function ProjectItem({ project }: { project: Project }) {
 export default function Projects({ projects }: { projects: Project[] }) {
   console.log("projects", projects);
   return (
-    <div
-      className="grid flex-grow-0 gap-3 md:gap-4 lg:gap-6"
-      style={{
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-      }}
-    >
-      {projects.map((project) => (
-        <ProjectItem project={project} key={project.slug} />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-col items-center py-16">
+        <h1 className="text-2xl font-medium text-blue-200 md:text-3xl">My Projects</h1>
+      </div>
+      <div
+        className="grid flex-grow-0 gap-3 md:gap-4 lg:gap-6"
+        style={{
+          gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
+        }}
+      >
+        {projects.map((project) => (
+          <ProjectItem project={project} key={project.slug} />
+        ))}
+      </div>
+    </>
   );
 }
