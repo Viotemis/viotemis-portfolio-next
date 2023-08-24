@@ -26,11 +26,13 @@ export default function RootLayout({
           gridTemplateRows: "auto 1fr auto",
         }}
       >
-        <Particles />
-        <Header />
+        <div className='z-20'>
+          <Header />
+        </div>
         {children}
         <Footer />
         <Analytics />
+        <Particles />
       </body>
     </html>
   );
