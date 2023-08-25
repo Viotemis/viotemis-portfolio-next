@@ -16,7 +16,7 @@ export default async function Home() {
             A full-stack developer, data scientist
           </div>
           <div className="text-base italic font-bold text-center lg:text-lg primary-gradient-2">
-            Actively looking for full-time SDE positions starting in June 2023!
+            Actively looking for full-time SDE positions starting in June 2024!
           </div>
           <div className="flex items-center md:gap-4">
             {/* <ContactMeButton /> */}
