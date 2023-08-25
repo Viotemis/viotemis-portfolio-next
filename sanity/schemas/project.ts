@@ -20,6 +20,16 @@ export default defineType({
       },
     }),
     defineField({
+      name: "type",
+      title: "Type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Website", value: "website" },
+        ]
+      }
+    }),
+    defineField({
       name: "showOnResume",
       title: "Show on Resume",
       type: "boolean",
