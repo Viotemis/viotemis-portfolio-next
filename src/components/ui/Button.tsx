@@ -3,6 +3,7 @@
 import React from "react";
 import { EMAIL_URL, RESUME_URL } from "@/constants";
 import va from "@vercel/analytics";
+import { Download } from "lucide-react";
 
 export default function Button({
   children,
@@ -11,7 +12,7 @@ export default function Button({
 }: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={"fcenter " + className} {...props}>
-      <div className="mt-3 text-base button-outline">{children}</div>
+      <div className="flex items-center px-3 py-2 text-base border-2 cursor-pointer md:px-4 md:py-3 hover:border-transparent hover:bg-[var(--primary)] trans">{children}</div>
     </div>
   );
 }
@@ -37,6 +38,7 @@ export function DownloadResumeButton() {
         window.open(RESUME_URL, "_blank");
       }}
     >
+      <Download className="mr-2" size={20} />
       Download My Resume
     </Button>
   );
