@@ -21,7 +21,7 @@ function formatDate(dateString: string) {
 
 function ProjectItem({ project }: { project: Project }) {
   return (
-    <div className="flex flex-col h-56 px-6 py-6 border hover:bg-blue-300/20 trans border-slate-400/50 hover:border-blue-500/70">
+    <div className="flex flex-col h-56 px-6 py-6 border hover:bg-blue-300/20 trans border-slate-400/50 hover:border-blue-500/20">
       {/* Title */}
       <div className="flex items-center flex-none mb-2 md:gap-2">
         <span className="text-xl font-medium truncate md:text-xl lg:text-2xl">
@@ -56,7 +56,7 @@ function ProjectItem({ project }: { project: Project }) {
       </div>
 
       {/* Description */}
-      <div className="mb-2 text-sm leading-6 line-clamp-3 text-slate-300">
+      <div className="mb-2 text-sm leading-6 line-clamp-2 text-slate-300">
         {project.description}
       </div>
 
