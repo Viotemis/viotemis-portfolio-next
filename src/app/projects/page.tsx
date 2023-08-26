@@ -1,5 +1,5 @@
 import React from "react";
-import Projects from "@/components/pages/Projects";
+import Projects from "@/components/pages/ProjectsPage";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import { getProjects } from "../../../sanity/lib/api";
 
