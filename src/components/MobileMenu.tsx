@@ -82,7 +82,7 @@ export function MobileMenu() {
           className="flex flex-col items-center justify-center h-full space-y-6 text-base font-medium text-center text-white"
           variants={{
             open: {
-              transition: { staggerChildren: 0.20, delayChildren: 0.3 },
+              transition: { staggerChildren: 0.15, delayChildren: 0.3 },
             },
             closed: {
               transition: { staggerChildren: 0.1, staggerDirection: -1 },
