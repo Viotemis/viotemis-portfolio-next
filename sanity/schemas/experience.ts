@@ -30,6 +30,11 @@ export default defineType({
       type: "boolean",
     }),
     defineField({
+      name: "showOnHomePage",
+      title: "Show on Home Page",
+      type: "boolean",
+    }),
+    defineField({
       name: "tags",
       title: "Tags",
       type: "array",

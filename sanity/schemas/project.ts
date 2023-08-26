@@ -35,6 +35,11 @@ export default defineType({
       type: "boolean",
     }),
     defineField({
+      name: "showOnHomePage",
+      title: "Show on Home Page",
+      type: "boolean",
+    }),
+    defineField({
       name: "status",
       title: "Status",
       type: "string",

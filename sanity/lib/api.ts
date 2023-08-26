@@ -6,7 +6,9 @@ const SANITY_SERVER =
 
 const sanity_fetch = (query: string) => {
   // console.log("fetching sanity", SANITY_SERVER + query);
-  return fetch(SANITY_SERVER + query, { next: { revalidate: 1 } })
+  return fetch(SANITY_SERVER + encodeURIComponent(query), {
+    next: { revalidate: 1 },
+  })
     .then((res) => res.json())
     .then((res) => res.result);
 };
@@ -35,4 +37,26 @@ export function getProjects(): Promise<Project[]> {
     dateRange,
     tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
   } | order(dateRange.start desc)`);
+}
+
+export async function getHomePageData(): Promise<{
+  projects: Project[];
+  experiences: Experience[];
+}> {
+  const res =
+    await sanity_fetch(`*[(_type == "project" || _type == "experience") && showOnHomePage]{
+  organization, _type,
+  title,
+  "slug": slug.current,
+  description,
+  content,
+  websiteUrl,
+  githubUrl,
+  dateRange,
+  tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
+} | order(dateRange.start)
+`);
+  const projects = res.filter((x: any) => x._type == "project");
+  const experiences = res.filter((x: any) => x._type == "experience");
+  return { projects, experiences };
 }
