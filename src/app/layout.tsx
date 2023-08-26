@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={raleway.className + " grid h-screen"}
+        className={raleway.className + " grid h-screen max-w-screen"}
         style={{
           gridTemplateRows: "auto 1fr auto",
         }}
