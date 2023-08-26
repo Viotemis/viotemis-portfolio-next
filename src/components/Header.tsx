@@ -16,7 +16,7 @@ function NavItem({
   return (
     <div
       className={cn(
-        "z-10 px-6 py-2 bg-transparent cursor-pointer trans active:bg-blue-400/70",
+        "z-10 px-6 md:py-3 bg-transparent cursor-pointer trans active:bg-blue-400/70",
         className
       )}
       {...props}
