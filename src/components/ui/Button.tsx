@@ -12,7 +12,7 @@ export default function Button({
 }: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={"fcenter " + className} {...props}>
-      <div className="flex items-center px-3 py-2 text-base border-2 cursor-pointer md:px-4 md:py-3 hover:border-transparent hover:bg-[var(--primary)] trans">{children}</div>
+      <div className="flex items-center px-3 py-2 text-sm md:text-base border cursor-pointer md:px-4 md:py-3 hover:border-transparent hover:bg-[var(--primary)] trans">{children}</div>
     </div>
   );
 }
