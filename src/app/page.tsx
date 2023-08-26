@@ -2,20 +2,27 @@ import { SocialMedia } from "@/components/SocialMedia";
 import { ContactMeButton, DownloadResumeButton } from "@/components/ui/Button";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import { ABOUT_ME_TEXT } from "@/constants";
+import { SectionHeader } from "@/components/ui/Typography";
+import { getHomePageData } from "../../sanity/lib/api";
+import { SectionContainer } from "@/components/ui/Container";
+import { ProjectCard } from "@/components/ui/Card";
+import Link from "next/link";
 
 export default async function Home() {
+  const data = await getHomePageData();
+  // console.log(data);
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
         <div className="flex flex-col items-center space-y-2 md:space-y-4 md:text-4xl">
-          <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] tracking-wider">
+          <h1 className="text-[1.75rem] text-center sm:text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] tracking-wider">
             Hello, {"I'm "}
             <span className="font-bold primary-gradient">Bowang Lan</span>
           </h1>
-          <div className="tracking-wide text-center lg:pt-3 sm:text-xl md:text-2xl text-slate-300">
+          <div className="text-base tracking-wide text-center lg:pt-3 sm:text-xl md:text-2xl text-slate-300">
             A full-stack software engineer and data scientist
           </div>
-          <div className="text-base italic font-bold tracking-wide text-center lg:text-lg primary-gradient-2">
+          <div className="text-sm italic font-bold tracking-wide text-center md:text-base lg:text-lg primary-gradient-2">
             Actively looking for full-time SDE positions starting in June 2024!
           </div>
           <div className="flex items-center pt-3 md:gap-4">
@@ -28,19 +35,32 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="px-4 py-8 fcenter">
-        <h2 className="py-10 text-4xl font-medium text-blue-200">About Me</h2>
+      <SectionContainer>
+        <SectionHeader>About Me</SectionHeader>
         <div className="max-w-[600px] text-center">
           {ABOUT_ME_TEXT.map((t, i) => (
             <p
               key={i}
-              className="mb-6 leading-8"
+              className="mb-6 leading-8 tracking-wide"
               dangerouslySetInnerHTML={{ __html: t }}
             ></p>
           ))}
         </div>
-      </section>
+      </SectionContainer>
 
+      <SectionContainer>
+        <SectionHeader>Feature Projects</SectionHeader>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+          {data.projects.map((project) => (
+            <ProjectCard project={project} key={project.slug} />
+          ))}
+        </div>
+        <Link href="/projects" className="mt-6 cursor-pointer md:mt-10">View all projects</Link>
+      </SectionContainer>
+
+      {/* <SectionContainer>
+        <SectionHeader>Experiences</SectionHeader>
+      </SectionContainer> */}
     </DefaultLayout>
   );
 }
