@@ -67,14 +67,13 @@ export function MobileMenu() {
         <MenuToggle toggle={() => toggleOpen()} />
       </div>
       <motion.div
-        className="fixed z-10 w-full lg:max-w-xl"
+        className="fixed z-10 w-full lg:max-w-xl backdrop-blur-sm"
         style={{
           // top: "var(--h-header)",
           top: 0,
           bottom: 0,
-          // left: 0,
+          left: 0,
           right: 0,
-          backdropFilter: "blur(8px)",
           background: "rgba(var(--primary-950) / 0.5)",
         }}
         variants={menuContainerVariants}
@@ -83,10 +82,10 @@ export function MobileMenu() {
           className="flex flex-col items-center justify-center h-full space-y-6 text-base font-medium text-center text-white"
           variants={{
             open: {
-              transition: { staggerChildren: 0.07, delayChildren: 0.3 },
+              transition: { staggerChildren: 0.20, delayChildren: 0.3 },
             },
             closed: {
-              transition: { staggerChildren: 0.05, staggerDirection: -1 },
+              transition: { staggerChildren: 0.1, staggerDirection: -1 },
             },
           }}
         >
