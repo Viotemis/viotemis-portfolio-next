@@ -16,10 +16,8 @@ function SocialMediaItem({
   name: string;
 }) {
   return (
-    <a
-      className="w-12 h-12 hover:scale-95 bg-gray-100/20 hover:bg-[var(--primary)] fcenter relative cursor-pointer trans group overflow-hidden"
-      target="_blank"
-      href={url}
+    <span
+      className="w-10 h-10 md:w-12 md:h-12 hover:scale-95 bg-gray-100/20 hover:bg-[var(--primary)] fcenter relative cursor-pointer trans group overflow-hidden"
       onClick={(e) => {
         e.preventDefault();
         // va.track("ClickSocialMedia", {
@@ -34,7 +32,7 @@ function SocialMediaItem({
       <div className="absolute top-[50%] group-hover:translate-y-[-50%] translate-y-[250%] trans">
         {icon}
       </div>
-    </a>
+    </span>
   );
 }
 
@@ -42,17 +40,17 @@ export function SocialMedia() {
   return (
     <div className="flex items-center gap-6">
       <SocialMediaItem
-        icon={<FaLinkedinIn size={20} />}
+        icon={<FaLinkedinIn className="w-[16px] h-[16px] md:w-[20px] md:h-[20px]" />}
         url={LINKEDIN_URL}
         name="LinkedIn"
       />
       <SocialMediaItem
-        icon={<FaGithub size={20} />}
+        icon={<FaGithub className="w-[16px] h-[16px] md:w-[20px] md:h-[20px]" />}
         url={GITHUB_URL}
         name="Github"
       />
       <SocialMediaItem
-        icon={<AiFillMail size={20} />}
+        icon={<AiFillMail className="w-[16px] h-[16px] md:w-[20px] md:h-[20px]" />}
         url={EMAIL_URL}
         name="Email"
       />
