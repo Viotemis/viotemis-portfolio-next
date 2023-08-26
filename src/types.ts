@@ -17,16 +17,27 @@ interface Tag {
   iconScale?: number;
 }
 
+interface DateRange {
+  start: string;
+  end?: string;
+  ongoing?: boolean;
+}
+
 interface Project {
   title: string;
   slug: string;
   description: string;
   websiteUrl?: string;
   githubUrl?: string;
-  dateRange: {
-    start: string;
-    end?: string;
-    ongoing?: boolean;
-  };
+  dateRange: DateRange;
   tags: Tag[];
+}
+
+interface Experience {
+  title: string;
+  slug: string;
+  organization: string;
+  description: string;
+  content: string;
+  dateRange: DateRange;
 }
