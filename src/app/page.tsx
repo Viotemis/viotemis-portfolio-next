@@ -55,7 +55,9 @@ export default async function Home() {
             <ProjectCard project={project} key={project.slug} />
           ))}
         </div>
-        <Link href="/projects" className="mt-6 cursor-pointer md:mt-10">View all projects</Link>
+        <Link href="/projects" className="mt-6 cursor-pointer md:mt-10">
+          View all projects
+        </Link>
       </SectionContainer>
 
       {/* <SectionContainer>

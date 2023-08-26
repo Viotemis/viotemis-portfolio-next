@@ -1,4 +1,4 @@
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Particles from "@/components/Particles";
@@ -26,7 +26,7 @@ export default function RootLayout({
           gridTemplateRows: "auto 1fr auto",
         }}
       >
-        <div className='z-20'>
+        <div className="z-20">
           <Header />
         </div>
         {children}
