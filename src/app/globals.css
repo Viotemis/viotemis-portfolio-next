@@ -117,12 +117,30 @@ body {
   color: var(--text);
 }
 
+/* grid card layout */
+.grid-cols-minmax {
+  grid-template-columns: 1fr;
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .button-outline {
+    padding: 0.75rem 2rem;
+  }
+
+  .grid-cols-minmax {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+}
+
+/* md */
 @media (min-width: 768px) {
   .px-page {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
+
 
 /* Scrollbar */
 
@@ -137,6 +155,7 @@ body {
   height: 8px;
   width: 8px;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 5px;
   background-color: transparent;

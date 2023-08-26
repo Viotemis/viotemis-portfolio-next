@@ -12,24 +12,19 @@ function SanityImage({ image, alt }: { image: string; alt: string }) {
 }
 
 export default function Projects({ projects }: { projects: Project[] }) {
-  // console.log("projects", projects);
+  console.log("projects", projects);
   return (
-    <>
-      <div className="flex flex-col items-center max-w-[calc(100% - 16px)] mb-8">
-        <div className="py-8">
-          <SectionHeader>My Projects</SectionHeader>
-        </div>
-        <div
-          className="grid flex-grow-0 max-w-full gap-4 md:gap-6"
-          style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(460px, 1fr))",
-          }}
-        >
-          {projects.map((project) => (
-            <ProjectCard project={project} key={project.slug} />
-          ))}
-        </div>
+    <div className="flex flex-col items-stretch max-w-[calc(100% - 16px)] mb-8">
+      <div className="py-8 fcenter">
+        <SectionHeader>My Projects</SectionHeader>
       </div>
-    </>
+      <div
+        className="grid gap-4 md:gap-6 grid-cols-minmax"
+      >
+        {projects.map((project) => (
+          <ProjectCard project={project} key={project.slug} />
+        ))}
+      </div>
+    </div>
   );
 }
