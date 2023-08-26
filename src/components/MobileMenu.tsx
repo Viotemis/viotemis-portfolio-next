@@ -3,6 +3,7 @@
 import { motion, useCycle } from "framer-motion";
 import React from "react";
 import { IconContainer, Path } from "./ui/Icon";
+import { navItems } from "@/constants";
 
 export const MenuToggle = ({
   toggle,
@@ -62,18 +63,60 @@ export function MobileMenu() {
       initial={false}
       animate={open ? "open" : "closed"}
     >
-      <MenuToggle toggle={() => toggleOpen()} />
+      <div className="fixed z-20 right-4 top-4">
+        <MenuToggle toggle={() => toggleOpen()} />
+      </div>
       <motion.div
-        className="fixed w-full lg:max-w-xl"
+        className="fixed z-10 w-full lg:max-w-xl"
         style={{
-          top: "var(--h-header)",
+          // top: "var(--h-header)",
+          top: 0,
           bottom: 0,
           // left: 0,
           right: 0,
-          background: "rgba(var(--primary-950), 0.7)",
+          backdropFilter: "blur(8px)",
+          background: "rgba(var(--primary-950) / 0.5)",
         }}
         variants={menuContainerVariants}
-      ></motion.div>
+      >
+        <motion.div
+          className="flex flex-col items-center justify-center h-full space-y-6 text-base font-medium text-center text-white"
+          variants={{
+            open: {
+              transition: { staggerChildren: 0.07, delayChildren: 0.3 },
+            },
+            closed: {
+              transition: { staggerChildren: 0.05, staggerDirection: -1 },
+            },
+          }}
+        >
+          {navItems.map((item) => (
+            <motion.a
+              key={item.text}
+              href={item.href}
+              className="w-full py-2 text-center"
+              variants={{
+                open: {
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    y: { stiffness: 1000, velocity: -100 },
+                  },
+                },
+                closed: {
+                  y: 50,
+                  opacity: 0,
+                  transition: {
+                    y: { stiffness: 1000 },
+                  },
+                },
+              }}
+            >
+              {item.text}
+            </motion.a>
+          ))}
+        </motion.div>
+      </motion.div>
     </motion.nav>
   );
 }

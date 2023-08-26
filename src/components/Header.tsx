@@ -4,6 +4,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { MobileMenu } from "./MobileMenu";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { navItems } from "@/constants";
 
 function NavItem({
   text,
@@ -24,21 +25,6 @@ function NavItem({
     </div>
   );
 }
-
-const navItems = [
-  {
-    text: "Home",
-    href: "/",
-  },
-  {
-    text: "Projects",
-    href: "/projects",
-  },
-  // {
-  //   text: "Blogs",
-  //   href: "/blogs",
-  // },
-];
 
 const animateOptions = {
   duration: 300,
