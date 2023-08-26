@@ -8,6 +8,8 @@
   --h-header: 80px;
   --h-mobile-menu: calc(100vh - var(--h-header));
   --h-main: calc(100vh - var(--h-header));
+  --w-scrollbar: 8px;
+  --w-main: calc(100vw - var(--w-scrollbar));
 
   /* --text: 239 242 250;
   --background: 0 4 15;
@@ -153,7 +155,7 @@ body {
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
   height: 8px;
-  width: 8px;
+  width: var(--w-scrollbar);
 }
 
 *::-webkit-scrollbar-track {

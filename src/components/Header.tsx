@@ -60,7 +60,7 @@ export default function Header() {
 
   return (
     <header
-      className="relative flex items-center justify-between h-[var(--h-header)] px-page trans w-screen"
+      className="relative flex items-center justify-between h-[var(--h-header)] px-page trans"
       style={{
         display: pathname.startsWith("/admin") ? "none" : "flex",
       }}
@@ -105,7 +105,7 @@ export default function Header() {
         >
           <div
             ref={hoverBox}
-            className="absolute inset-y-0 left-0 opacity-0 pointer-events-none bg-blue-400/30"
+            className="absolute inset-y-0 left-0 opacity-0 pointer-events-none bg-blue-400/20"
           ></div>
           <div
             ref={activeBox}
