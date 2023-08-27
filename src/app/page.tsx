@@ -11,7 +11,7 @@ import { Qoute } from "@/components/ui/Qoute";
 
 export default async function Home() {
   const data = await getHomePageData();
-  console.log(data);
+  // console.log(data);
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
