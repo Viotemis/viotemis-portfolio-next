@@ -5,7 +5,7 @@ import { ABOUT_ME_TEXT } from "@/constants";
 import { SectionHeader } from "@/components/ui/Typography";
 import { getHomePageData } from "../../sanity/lib/api";
 import { SectionContainer } from "@/components/ui/Container";
-import { ProjectCard } from "@/components/ui/Card";
+import { ProjectCard, ProjectCardList } from "@/components/ui/Card";
 import Link from "next/link";
 
 export default async function Home() {
@@ -50,19 +50,23 @@ export default async function Home() {
 
       <SectionContainer>
         <SectionHeader>Feature Projects</SectionHeader>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+        <ProjectCardList projects={data.projects} className="grid-cols-1 lg:grid-cols-2" />
+        {/* <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:gap-6">
           {data.projects.map((project) => (
             <ProjectCard project={project} key={project.slug} />
           ))}
-        </div>
+        </div> */}
         <Link href="/projects" className="mt-6 cursor-pointer md:mt-10">
           View all projects
         </Link>
       </SectionContainer>
 
+      {/* TODO: experience section */}
       {/* <SectionContainer>
         <SectionHeader>Experiences</SectionHeader>
       </SectionContainer> */}
+
+      {/* TODO: quote */}
     </DefaultLayout>
   );
 }

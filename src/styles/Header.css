@@ -13,14 +13,16 @@
 .nav-item[data-active="true"]::before {
     left: 0;
     right: 0;
+    @apply bg-slate-400;
+}
+
+.nav-item[data-active="true"]:hover::before {
     background: var(--text);
-    /* width: 100%; */
 }
 
 .nav-item:hover::before {
     left: 0;
     right: 0;
-    /* width: 100%; */
 }
 
 .nav-item {
@@ -34,10 +36,13 @@
 
 .nav-item[data-active="true"] {
     color: var(--text);
-    background: rgba(var(--primary-600) / 0.5);
+    background: var(--bg-nav-item-active);
 }
 
 .nav-item[data-active="true"]:hover {
-    color: var(--text);
-    background: rgba(var(--primary-600) / 0.7);
+    background: var(--bg-nav-item-active-hover);
+}
+
+#mobile-menu .nav-item[data-active="true"] {
+    background: transparent;
 }

@@ -1,49 +1,30 @@
+"use client";
+
 import Image from "next/image";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
-import { FaGithub } from "react-icons/fa";
-import { formatDate } from "@/lib/utils";
+import { DateRange } from "./DateRange";
+import { GithubLink, WebsiteLink } from "./Link";
+import { useState, useEffect } from "react";
+import Modal from "../ui/Modal";
+import { Tag } from "../ui/Tag";
+import { cn } from "@/lib/utils";
 
-function DateRange({ dateRange }: { dateRange: DateRange }) {
+export function ProjectCard({
+  project,
+  handleOpen,
+}: {
+  project: Project;
+  handleOpen: (project: Project) => void;
+}) {
   return (
-    <div className="flex items-center flex-none gap-1 ml-3 text-sm text-slate-400">
-      <span className="">{formatDate(dateRange.start)}</span>
-      {dateRange.end && (
-        <>
-          <span>{"-"}</span>
-          <span>{formatDate(dateRange.end)}</span>
-        </>
-      )}
-      {dateRange.ongoing && (
-        <>
-          <span>{"-"}</span>
-          <span>{"Present"}</span>
-        </>
-      )}
-    </div>
-  );
-}
-
-function GithubLink({ url }: { url: string }) {
-  return (
-    <a href={url} target="_blank">
-      <FaGithub className="w-5 h-5 ml-3 cursor-pointer" />
-    </a>
-  );
-}
-
-function WebsiteLink({ url }: { url: string }) {
-  return (
-    <a href={url} target="_blank">
-      <ArrowTopRightOnSquareIcon className="w-5 h-5 ml-3 cursor-pointer" />
-    </a>
-  );
-}
-
-export function ProjectCard({ project }: { project: Project }) {
-  return (
-    <div className="flex flex-col h-auto p-4 border md:h-auto sm:p-4 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80">
+    <div
+      className="flex flex-col h-auto p-4 border cursor-pointer md:h-auto sm:p-4 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
+      onClick={(e) => {
+        e.preventDefault();
+        handleOpen(project);
+      }}
+    >
       {/* Title */}
-      <div className="flex items-center flex-none mb-2 md:gap-2">
+      <div className="flex items-center flex-none gap-3 mb-2">
         <span className="text-lg font-medium truncate sm:text-xl md:text-xl lg:text-2xl">
           {project.title}
         </span>
@@ -88,5 +69,116 @@ export function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
     </div>
+  );
+}
+
+export function ProjectCardList({
+  projects,
+  className = "",
+}: {
+  projects: Project[];
+  className?: string;
+}) {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      setModalOpen(() => true);
+    }
+  }, [selectedProject]);
+
+  useEffect(() => {
+    if (!modalOpen) {
+      setSelectedProject(() => null);
+    }
+  }, [modalOpen]);
+
+  const handleModalClose = () => {
+    setModalOpen(() => false);
+  };
+
+  const handleOpen = (project: Project) => {
+    setSelectedProject(() => project);
+  };
+
+  return (
+    <>
+      <div className={cn("grid gap-4 md:gap-6 grid-cols-minmax", className)}>
+        {projects.map((project) => (
+          <ProjectCard
+            handleOpen={handleOpen}
+            project={project}
+            key={project.slug}
+          />
+        ))}
+      </div>
+      <Modal
+        open={modalOpen}
+        handleClose={handleModalClose}
+        className="flex flex-col mx-auto w-[80%] sm:w-[600px] md:w-[750px] lg:w-[800px] px-3 sm:px-4 md:px-6 bg-[var(--bg-modal)] space-y-4 pt-8 pb-10 min-h-[360px]"
+      >
+        {selectedProject && (
+          <>
+            <div>
+              {/* Header (Desktop) */}
+
+              <div className="items-center hidden w-full gap-4 mb-6 md:flex">
+                <h1 className="text-2xl font-medium">
+                  {selectedProject.title}
+                </h1>
+
+                <div className="flex flex-1 min-w-0">
+                  {(selectedProject.websiteUrl ||
+                    selectedProject.githubUrl) && (
+                    <div className="flex items-center gap-4">
+                      {selectedProject.websiteUrl && (
+                        <WebsiteLink url={selectedProject.websiteUrl} />
+                      )}
+                      {selectedProject.githubUrl && (
+                        <GithubLink url={selectedProject.githubUrl} />
+                      )}
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0"></div>
+                  <DateRange dateRange={selectedProject.dateRange} />
+                </div>
+              </div>
+
+              {/* Header (Mobile) */}
+              <div className="flex flex-col items-center gap-3 mb-6 md:hidden">
+                <h1 className="text-2xl font-medium md:text-3xl">
+                  {selectedProject.title}
+                </h1>
+                <DateRange dateRange={selectedProject.dateRange} />
+                {(selectedProject.websiteUrl || selectedProject.githubUrl) && (
+                  <div className="flex items-center gap-3">
+                    {selectedProject.websiteUrl && (
+                      <WebsiteLink url={selectedProject.websiteUrl} />
+                    )}
+                    {selectedProject.githubUrl && (
+                      <GithubLink url={selectedProject.githubUrl} />
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="flex flex-col items-center w-full">
+              <div className="p-1.5 sm:p-2 md:px-5 py-3 md:py-4 text-base leading-8 tracking-wide text-center md:text-left rounded-md bg-slate-800/80">
+                {selectedProject.description}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center flex-none gap-2 mx-auto md:mx-0">
+              {selectedProject.tags.map((tag) => (
+                <Tag tag={tag} key={tag.name} />
+              ))}
+            </div>
+          </>
+        )}
+      </Modal>
+    </>
   );
 }

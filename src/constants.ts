@@ -9,6 +9,8 @@ export const COLOR_PRIMARY = "rgb(52, 93, 225)";
 export const COLOR_SECONDARY = "rgb(18, 27, 59)";
 export const COLOR_ACCENT = "rgb(76, 235, 156)";
 
+export const NICE_CUBIC = [0.19, 1, 0.22, 1];
+
 export const SANITY_CDN = "https://cdn.sanity.io";
 
 export const ABOUT_ME_TEXT = [
@@ -25,6 +27,14 @@ export const navItems = [
     text: "Projects",
     href: "/projects",
   },
+  // {
+  //   text: "Experiences",
+  //   href: "/experiences",
+  // },
+  // {
+  //   text: "Resume",
+  //   href: "/resume",
+  // }
   // {
   //   text: "Blogs",
   //   href: "/blogs",

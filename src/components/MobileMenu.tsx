@@ -41,7 +41,7 @@ const menuContainerVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: "easeOut",
     },
   },
@@ -49,7 +49,7 @@ const menuContainerVariants = {
     opacity: 0,
     x: "100%",
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: "easeIn",
     },
   },
@@ -60,6 +60,7 @@ export function MobileMenu() {
   return (
     <motion.nav
       className="relative block md:hidden"
+      id="mobile-menu"
       initial={false}
       animate={open ? "open" : "closed"}
     >
@@ -85,7 +86,8 @@ export function MobileMenu() {
             <motion.a
               key={item.text}
               href={item.href}
-              className="w-full py-2 text-center"
+              className="py-2 text-center nav-item"
+              data-active={item.href === window.location.pathname}
               variants={{
                 open: {
                   y: 0,

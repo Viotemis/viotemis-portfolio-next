@@ -1,9 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("../styles/Header.css");
-@import url("../styles/Scrollbar.css");
-@import url("../styles/Modal.css");
 
 :root {
   --color-main: #212121;
@@ -16,6 +13,10 @@
 
   --bg-modal: rgba(var(--primary-900), 0.7);
   --bg-mobile-menu: rgba(var(--primary-900), 0.7);
+  --bg-nav-item-active: rgba(var(--primary-600), 0.6);
+  --bg-nav-item-active-hover: rgba(var(--primary-600), 0.7);
+
+  /* --shadow-modal:  0px 0px 3px 0.5px rgba(var(--primary-500), 0.8); */
 
   /* --text: 239 242 250;
   --background: 0 4 15;
@@ -27,7 +28,7 @@
   --primary: rgb(52, 93, 225);
   --secondary: rgb(18, 27, 59);
   --accent: rgb(76, 235, 156);
-  
+
   --primary-50: 211, 224, 252;
   --primary-50-rgb: #d3e0fc;
   --primary-100: 190, 209, 250;
@@ -60,6 +61,10 @@
   /* font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif; */
   /* font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif; */
 }
+
+@import url("../styles/Header.css");
+@import url("../styles/Scrollbar.css");
+@import url("../styles/Modal.css");
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -141,6 +146,16 @@ body {
   grid-template-columns: 1fr;
 }
 
+.social-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* sm */
 @media (min-width: 640px) {
   .button-outline {
@@ -157,5 +172,10 @@ body {
   .px-page {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .social-icon {
+    width: 3rem;
+    height: 3rem;
   }
 }

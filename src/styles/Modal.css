@@ -1,0 +1,5 @@
+.modal {
+    -webkit-box-shadow: var(--shadow-modal);
+    -moz-box-shadow: var(--shadow-modal);
+    box-shadow: var(--shadow-modal);
+}
