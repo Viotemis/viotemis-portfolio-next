@@ -166,8 +166,8 @@ export function ProjectCardList({
 
             {/* Body */}
             <div className="flex flex-col items-center w-full">
-              <div className="p-1.5 sm:p-2 md:px-5 py-3 md:py-4 text-xs leading-6 md:leading-8 md:tracking-wide text-center md:text-left rounded-md bg-slate-800/80">
-                {selectedProject.description}
+              <div className="p-1.5 sm:p-2 md:px-5 py-3 md:py-4 text-xs leading-6 md:leading-8 md:tracking-wide text-center md:text-left rounded-md bg-slate-800/80 w-full">
+                <p>{selectedProject.description}</p>
               </div>
             </div>
 
