@@ -116,7 +116,7 @@ export function ProjectCardList({
       <Modal
         open={modalOpen}
         handleClose={handleModalClose}
-        className="flex flex-col mx-auto w-[80%] sm:w-[600px] md:w-[750px] lg:w-[800px] px-3 sm:px-4 md:px-6 bg-[var(--bg-modal)] space-y-4 pt-8 pb-10 min-h-[360px]"
+        className="flex flex-col mx-auto w-[80%] sm:w-[600px] md:w-[750px] lg:w-[800px] px-3 sm:px-4 md:px-6 bg-[var(--bg-modal)] space-y-4 pt-8 pb-10 min-h-[360px] max-h-[70%] overflow-y-scroll"
       >
         {selectedProject && (
           <>
@@ -166,12 +166,12 @@ export function ProjectCardList({
 
             {/* Body */}
             <div className="flex flex-col items-center w-full">
-              <div className="p-1.5 sm:p-2 md:px-5 py-3 md:py-4 text-base leading-8 tracking-wide text-center md:text-left rounded-md bg-slate-800/80">
+              <div className="p-1.5 sm:p-2 md:px-5 py-3 md:py-4 text-xs leading-6 md:leading-8 md:tracking-wide text-center md:text-left rounded-md bg-slate-800/80">
                 {selectedProject.description}
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center flex-none gap-2 mx-auto md:mx-0">
+            <div className="flex flex-wrap items-center justify-center flex-none gap-2 mx-auto md:justify-start md:mx-0">
               {selectedProject.tags.map((tag) => (
                 <Tag tag={tag} key={tag.name} />
               ))}

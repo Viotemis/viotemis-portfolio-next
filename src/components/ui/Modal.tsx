@@ -72,7 +72,7 @@ export default function Modal({
     <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
       {open && (
         <Backdrop onClick={handleClose}>
-          <motion.div className={`modal backdrop-blur-sm border border-slate-600 ${className}`} variants={flipVariants}>
+          <motion.div className={`modal backdrop-blur-sm ${className}`} variants={flipVariants}>
             {children}
           </motion.div>
           ;
