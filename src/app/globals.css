@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("../styles/Header.css");
+@import url("../styles/Scrollbar.css");
+@import url("../styles/Modal.css");
+@import url("../styles/Qoute.css");
+@import url("../styles/Qoute.css");
 
 :root {
   --color-main: #212121;
@@ -62,9 +67,6 @@
   /* font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif; */
 }
 
-@import url("../styles/Header.css");
-@import url("../styles/Scrollbar.css");
-@import url("../styles/Modal.css");
 
 @media (prefers-color-scheme: dark) {
   :root {

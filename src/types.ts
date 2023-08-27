@@ -41,3 +41,14 @@ interface Experience {
   content: string;
   dateRange: DateRange;
 }
+
+interface Author {
+  name: string;
+  slug: string;
+}
+
+interface Qoute {
+  qoute: string;
+  slug: string;
+  authors: Author[];
+}

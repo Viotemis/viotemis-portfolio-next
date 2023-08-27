@@ -1,0 +1,21 @@
+.qoute-container {
+    font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+    background: rgba(var(--primary-800), 0.8);
+    position: relative;
+}
+
+.qoute-container::before {
+    content: "";
+    --color: rgba(var(--primary-600), 0.7);
+    --size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0px;
+    height: 0px;
+    border: var(--size) solid transparent;
+    border-top: var(--size) solid var(--color);
+    border-right: var(--size) solid var(--color);
+    /* transform: rotate(45deg); */
+    box-sizing: content-box;
+}

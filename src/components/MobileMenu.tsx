@@ -4,6 +4,7 @@ import { motion, useCycle } from "framer-motion";
 import React from "react";
 import { IconContainer, Path } from "./ui/Icon";
 import { navItems } from "@/constants";
+import { usePathname } from "next/navigation";
 
 export const MenuToggle = ({
   toggle,
@@ -57,6 +58,7 @@ const menuContainerVariants = {
 
 export function MobileMenu() {
   const [open, toggleOpen] = useCycle(false, true);
+  const pathname = usePathname();
   return (
     <motion.nav
       className="relative block md:hidden"
@@ -87,7 +89,7 @@ export function MobileMenu() {
               key={item.text}
               href={item.href}
               className="py-2 text-center nav-item"
-              data-active={item.href === window.location.pathname}
+              data-active={item.href === pathname}
               variants={{
                 open: {
                   y: 0,

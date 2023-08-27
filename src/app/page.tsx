@@ -7,10 +7,11 @@ import { getHomePageData } from "../../sanity/lib/api";
 import { SectionContainer } from "@/components/ui/Container";
 import { ProjectCard, ProjectCardList } from "@/components/ui/Card";
 import Link from "next/link";
+import { Qoute } from "@/components/ui/Qoute";
 
 export default async function Home() {
   const data = await getHomePageData();
-  // console.log(data);
+  console.log(data);
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
@@ -50,7 +51,10 @@ export default async function Home() {
 
       <SectionContainer>
         <SectionHeader>Feature Projects</SectionHeader>
-        <ProjectCardList projects={data.projects} className="grid-cols-1 lg:grid-cols-2" />
+        <ProjectCardList
+          projects={data.projects}
+          className="grid-cols-1 lg:grid-cols-2 sm:max-w-[600px] md:max-w-[700px] lg:max-w-none"
+        />
         {/* <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:gap-6">
           {data.projects.map((project) => (
             <ProjectCard project={project} key={project.slug} />
@@ -66,7 +70,12 @@ export default async function Home() {
         <SectionHeader>Experiences</SectionHeader>
       </SectionContainer> */}
 
-      {/* TODO: quote */}
+      {/* quote */}
+      {data.qoute && (
+        <SectionContainer>
+          <Qoute qoute={data.qoute} />
+        </SectionContainer>
+      )}
     </DefaultLayout>
   );
 }
