@@ -8,15 +8,18 @@ import { navItems } from "@/constants";
 
 function NavItem({
   text,
+  active,
   className = "",
   ...props
 }: {
   text: string;
+  active: boolean;
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
+      data-active={active}
       className={cn(
-        "z-10 px-6 md:py-3 bg-transparent cursor-pointer trans active:bg-blue-400/70",
+        "z-10 px-6 md:py-3 bg-transparent cursor-pointer trans active:bg-blue-400/70 nav-item",
         className
       )}
       {...props}
@@ -115,11 +118,7 @@ export default function Header() {
             <NavItem
               {...item}
               key={i}
-              className={
-                item.href === pathname
-                  ? "bg-blue-500/70"
-                  : "text-slate-400 hover:text-white"
-              }
+              active={item.href === pathname}
               onMouseEnter={(e) => {
                 hoverBox.current!.animate(
                   {

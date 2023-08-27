@@ -1,0 +1,43 @@
+.nav-item::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.25s ease-out;
+    /* width: 0; */
+}
+
+.nav-item[data-active="true"]::before {
+    left: 0;
+    right: 0;
+    background: var(--text);
+    /* width: 100%; */
+}
+
+.nav-item:hover::before {
+    left: 0;
+    right: 0;
+    /* width: 100%; */
+}
+
+.nav-item {
+    position: relative;
+    @apply text-slate-400;
+}
+
+.nav-item:hover {
+    color: var(--text);
+}
+
+.nav-item[data-active="true"] {
+    color: var(--text);
+    background: rgba(var(--primary-600) / 0.5);
+}
+
+.nav-item[data-active="true"]:hover {
+    color: var(--text);
+    background: rgba(var(--primary-600) / 0.7);
+}
