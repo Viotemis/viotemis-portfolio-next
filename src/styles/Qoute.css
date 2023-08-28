@@ -1,6 +1,6 @@
 .qoute-container {
     font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
-    background: rgba(var(--primary-800), 0.8);
+    background: rgba(var(--primary-800), 0.7);
     position: relative;
 }
 
