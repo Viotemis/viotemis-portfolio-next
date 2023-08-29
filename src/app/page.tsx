@@ -1,17 +1,17 @@
 import { SocialMedia } from "@/components/SocialMedia";
 import { ContactMeButton, DownloadResumeButton } from "@/components/ui/Button";
 import DefaultLayout from "@/components/layout/DefaultLayout";
-import { ABOUT_ME_TEXT } from "@/constants";
 import { SectionHeader } from "@/components/ui/Typography";
 import { getHomePageData } from "../../sanity/lib/api";
 import { SectionContainer } from "@/components/ui/Container";
-import { ProjectCard, ProjectCardList } from "@/components/ui/Card";
+import { ExperienceList, ProjectCard, ProjectCardList } from "@/components/ui/Card";
 import Link from "next/link";
 import { Qoute } from "@/components/ui/Qoute";
+import { AboutMe } from "@/components/AboutMe";
 
 export default async function Home() {
   const data = await getHomePageData();
-  // console.log(data);
+  console.log(data);
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
@@ -38,15 +38,7 @@ export default async function Home() {
 
       <SectionContainer>
         <SectionHeader>About Me</SectionHeader>
-        <div className="max-w-[600px] text-center">
-          {ABOUT_ME_TEXT.map((t, i) => (
-            <p
-              key={i}
-              className="mb-6 leading-8 tracking-wide"
-              dangerouslySetInnerHTML={{ __html: t }}
-            ></p>
-          ))}
-        </div>
+        <AboutMe />
       </SectionContainer>
 
       <SectionContainer>
@@ -55,20 +47,16 @@ export default async function Home() {
           projects={data.projects}
           className="grid-cols-1 lg:grid-cols-2 sm:max-w-[600px] md:max-w-[700px] lg:max-w-none"
         />
-        {/* <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:gap-6">
-          {data.projects.map((project) => (
-            <ProjectCard project={project} key={project.slug} />
-          ))}
-        </div> */}
         <Link href="/projects" className="mt-6 cursor-pointer md:mt-10">
           View all projects
         </Link>
       </SectionContainer>
 
-      {/* TODO: experience section */}
-      {/* <SectionContainer>
+      {/* experience section */}
+      <SectionContainer>
         <SectionHeader>Experiences</SectionHeader>
-      </SectionContainer> */}
+        <ExperienceList experiences={data.experiences} />
+      </SectionContainer>
 
       {/* quote */}
       {data.qoute && (

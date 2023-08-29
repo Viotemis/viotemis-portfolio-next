@@ -39,6 +39,17 @@ export function getProjects(): Promise<Project[]> {
   } | order(dateRange.start desc)`);
 }
 
+export function getExperiences(): Promise<Experience[]> {
+  return sanity_fetch(`*[_type == "experience"]{
+    title,
+    "slug": slug.current,
+    organization,
+    description,
+    content,
+    dateRange,
+    } | order(dateRange.start desc)`);
+}
+
 export function getQoutes(): Promise<Qoute[]> {
   return sanity_fetch(`*[_type == "qoute"]{
     qoute,
@@ -54,7 +65,7 @@ export async function getHomePageData(): Promise<{
 }> {
   const res =
     await sanity_fetch(`*[((_type == "project" || _type == "experience") && showOnHomePage) || _type == "qoute"]{
-  organization, _type,
+  _type, organization,
   title,
   "slug": slug.current,
   description,
@@ -66,7 +77,7 @@ export async function getHomePageData(): Promise<{
 
   qoute,
   authors[]-> { name, "slug": slug.current },
-} | order(dateRange.start)
+} | order(dateRange.start desc)
 `);
   const projects = res.filter((x: any) => x._type == "project");
   const experiences = res.filter((x: any) => x._type == "experience");

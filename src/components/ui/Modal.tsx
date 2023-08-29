@@ -41,7 +41,7 @@ function Backdrop({
 }) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center modal-backdrop bg-black/70"
+      className="fixed inset-0 flex items-center justify-center z-100 modal-backdrop bg-black/70"
       initial="hidden"
       animate="visible"
       exit="exit"

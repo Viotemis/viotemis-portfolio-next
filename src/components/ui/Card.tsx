@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Modal from "../ui/Modal";
 import { Tag } from "../ui/Tag";
 import { cn } from "@/lib/utils";
+import BlockContent from "./BlockContent";
 
 export function ProjectCard({
   project,
@@ -25,9 +26,9 @@ export function ProjectCard({
     >
       {/* Title */}
       <div className="flex items-center flex-none gap-3 mb-2">
-        <span className="text-lg font-medium truncate sm:text-xl md:text-xl lg:text-2xl">
+        <h3 className="text-lg font-medium truncate sm:text-xl lg:text-2xl">
           {project.title}
-        </span>
+        </h3>
         <div className="items-center hidden gap-3 sm:flex">
           {project.websiteUrl && <WebsiteLink url={project.websiteUrl} />}
           {project.githubUrl && <GithubLink url={project.githubUrl} />}
@@ -180,5 +181,42 @@ export function ProjectCardList({
         )}
       </Modal>
     </>
+  );
+}
+
+export function ExperienceCard({ experience }: { experience: Experience }) {
+  return (
+    <div className="flex flex-col space-y-2">
+      <h3 className="text-lg font-semibold sm:text-2xl">
+        {experience.organization}
+      </h3>
+      <div className="flex items-baseline justify-between">
+        <span className="text-base italic sm:text-lg">{experience.title}</span>
+      </div>
+      <div>
+        <p className="text-xs sm:text-xs text-slate-300">{experience.description}</p>
+      </div>
+      <div>
+        <BlockContent value={experience.content} />
+      </div>
+    </div>
+  );
+}
+
+export function ExperienceList({ experiences }: { experiences: Experience[] }) {
+  console.log("experiences", experiences);
+  return (
+    <div className="grid mx-6 sm:mx-8 md:mx-10">
+      {experiences.map((experience) => (
+        <div className="relative flex items-start" key={experience.slug}>
+          <div className="w-[2px] h-full bg-blue-400"></div>
+          <div className="absolute w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[45px] md:top-9"></div>
+          <div className="flex flex-col items-start flex-1 min-w-0 gap-6 my-10 ml-6 sm:gap-8 md:gap-10 sm:ml-8 md:ml-10 sm:flex-row md:my-8">
+            <DateRange dateRange={experience.dateRange} />
+            <ExperienceCard experience={experience} key={experience.slug} />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
