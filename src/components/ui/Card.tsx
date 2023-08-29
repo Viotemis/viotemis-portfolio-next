@@ -184,21 +184,43 @@ export function ProjectCardList({
   );
 }
 
-export function ExperienceCard({ experience }: { experience: Experience }) {
+export function ExperienceCard({
+  experience,
+  align = "left",
+}: {
+  experience: Experience;
+  align?: "left" | "right";
+}) {
   return (
-    <div className="flex flex-col space-y-2">
+    <div
+      className="flex flex-col space-y-2"
+      style={{
+        alignItems: align === "left" ? "flex-start" : "flex-end",
+      }}
+    >
       <h3 className="text-lg font-semibold sm:text-2xl">
         {experience.organization}
       </h3>
-      <div className="flex items-baseline justify-between">
+      <div
+        className="flex items-baseline justify-between"
+        style={{
+          textAlign: align === "left" ? "left" : "right",
+        }}
+      >
         <span className="text-base italic sm:text-lg">{experience.title}</span>
       </div>
-      <div>
-        <p className="text-xs sm:text-xs text-slate-300">{experience.description}</p>
+      <div
+        style={{
+          textAlign: align === "left" ? "left" : "right",
+        }}
+      >
+        <p className="text-xs leading-6 md:text-sm text-slate-300">
+          {experience.description}
+        </p>
       </div>
-      <div>
+      {/* <div>
         <BlockContent value={experience.content} />
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -207,15 +229,56 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
   console.log("experiences", experiences);
   return (
     <div className="grid mx-6 sm:mx-8 md:mx-10">
-      {experiences.map((experience) => (
-        <div className="relative flex items-start" key={experience.slug}>
-          <div className="w-[2px] h-full bg-blue-400"></div>
-          <div className="absolute w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[45px] md:top-9"></div>
-          <div className="flex flex-col items-start flex-1 min-w-0 gap-6 my-10 ml-6 sm:gap-8 md:gap-10 sm:ml-8 md:ml-10 sm:flex-row md:my-8">
-            <DateRange dateRange={experience.dateRange} />
-            <ExperienceCard experience={experience} key={experience.slug} />
+      {experiences.map((experience, i) => (
+        <>
+          <div
+            className="relative flex items-start md:hidden"
+            key={experience.slug}
+          >
+            <div className="w-[2px] h-full bg-blue-400"></div>
+            <div className="absolute w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[45px] md:top-9"></div>
+            <div className="flex flex-col items-start flex-1 min-w-0 gap-3 my-10 ml-6 sm:gap-8 md:gap-10 sm:ml-8 md:ml-10 sm:flex-row md:my-8">
+              <DateRange dateRange={experience.dateRange} />
+              <ExperienceCard experience={experience} key={experience.slug} />
+            </div>
           </div>
-        </div>
+          <div className="relative hidden py-8 md:flex">
+            {i % 2 === 0 ? (
+              <>
+                <div className="flex-1"></div>
+                <div className="absolute left-1/2 w-[2px] h-full bg-blue-400 grow-0">
+                  <div className="w-2 h-2 mt-[11px] -translate-x-[3px] bg-blue-100 rounded-full"></div>
+                </div>
+                <div className="flex items-start flex-1 gap-6 ml-12">
+                  <div className="mt-[6px] grow shrink-0">
+                    <DateRange dateRange={experience.dateRange} />
+                  </div>
+                  <ExperienceCard
+                    experience={experience}
+                    key={experience.slug}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex flex-row-reverse items-start flex-1 gap-6 mr-12">
+                  <div className="mt-[6px] grow shrink-0">
+                    <DateRange dateRange={experience.dateRange} />
+                  </div>
+                  <ExperienceCard
+                    experience={experience}
+                    align="right"
+                    key={experience.slug}
+                  />
+                </div>
+                <div className="w-[2px] absolute left-1/2 h-full bg-blue-400">
+                  <div className="w-2 h-2 mt-[11px] -translate-x-[3px] bg-blue-100 rounded-full"></div>
+                </div>
+                <div className="flex-1"></div>
+              </>
+            )}
+          </div>
+        </>
       ))}
     </div>
   );
