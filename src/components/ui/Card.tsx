@@ -228,7 +228,7 @@ export function ExperienceCard({
 export function ExperienceList({ experiences }: { experiences: Experience[] }) {
   console.log("experiences", experiences);
   return (
-    <div className="grid mx-6 sm:mx-8 md:mx-10">
+    <div className="grid mx-6 sm:mx-8">
       {experiences.map((experience, i) => (
         <>
           <div
@@ -238,7 +238,10 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
             <div className="w-[2px] h-full bg-blue-400"></div>
             <div className="absolute w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[45px] md:top-9"></div>
             <div className="flex flex-col items-start flex-1 min-w-0 gap-3 my-10 ml-6 sm:gap-8 md:gap-10 sm:ml-8 md:ml-10 sm:flex-row md:my-8">
-              <DateRange dateRange={experience.dateRange} />
+              <DateRange
+                dateRange={experience.dateRange}
+                className="mt-1 text-blue-200 "
+              />
               <ExperienceCard experience={experience} key={experience.slug} />
             </div>
           </div>
@@ -250,9 +253,10 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
                   <div className="w-2 h-2 mt-[11px] -translate-x-[3px] bg-blue-100 rounded-full"></div>
                 </div>
                 <div className="flex items-start flex-1 gap-6 ml-12">
-                  <div className="mt-[6px] grow shrink-0">
-                    <DateRange dateRange={experience.dateRange} />
-                  </div>
+                  <DateRange
+                    dateRange={experience.dateRange}
+                    className="mt-[4px] text-lg text-blue-200"
+                  />
                   <ExperienceCard
                     experience={experience}
                     key={experience.slug}
@@ -262,9 +266,10 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
             ) : (
               <>
                 <div className="flex flex-row-reverse items-start flex-1 gap-6 mr-12">
-                  <div className="mt-[6px] grow shrink-0">
-                    <DateRange dateRange={experience.dateRange} />
-                  </div>
+                  <DateRange
+                    dateRange={experience.dateRange}
+                    className="mt-[4px] text-lg text-blue-200"
+                  />
                   <ExperienceCard
                     experience={experience}
                     align="right"
