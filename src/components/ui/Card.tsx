@@ -117,7 +117,7 @@ export function ProjectCardList({
       <Modal
         open={modalOpen}
         handleClose={handleModalClose}
-        className="flex flex-col mx-auto w-[80%] sm:w-[600px] md:w-[750px] lg:w-[800px] px-3 sm:px-4 md:px-6 bg-[var(--bg-modal)] space-y-4 pt-8 pb-10 min-h-[360px] max-h-[70%] overflow-y-scroll"
+        className="flex flex-col mx-auto w-[80%] sm:w-[600px] md:w-[750px] backdrop-blur-sm lg:w-[800px] px-3 sm:px-4 md:px-6 bg-[var(--bg-modal)] space-y-4 pt-8 pb-10 min-h-[360px] max-h-[70%] overflow-y-scroll"
       >
         {selectedProject && (
           <>
@@ -207,7 +207,7 @@ export function ExperienceCard({
           textAlign: align === "left" ? "left" : "right",
         }}
       >
-        <span className="text-base italic sm:text-lg">{experience.title}</span>
+        <span className="text-base italic">{experience.title}</span>
       </div>
       <div
         style={{
@@ -240,23 +240,24 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
             <div className="flex flex-col items-start flex-1 min-w-0 gap-3 my-10 ml-6 sm:gap-8 md:gap-10 sm:ml-8 md:ml-10 sm:flex-row md:my-8">
               <DateRange
                 dateRange={experience.dateRange}
-                className="mt-1 text-blue-200 "
+                className="mt-1 text-blue-200"
               />
               <ExperienceCard experience={experience} key={experience.slug} />
             </div>
           </div>
+          <div className="w-[2px] absolute left-1/2 h-full bg-blue-400"></div>
           <div className="relative hidden py-8 md:flex">
             {i % 2 === 0 ? (
               <>
                 <div className="flex-1"></div>
-                <div className="absolute left-1/2 w-[2px] h-full bg-blue-400 grow-0">
-                  <div className="w-2 h-2 mt-[11px] -translate-x-[3px] bg-blue-100 rounded-full"></div>
-                </div>
-                <div className="flex items-start flex-1 gap-6 ml-12">
-                  <DateRange
+                <div className="flex items-start flex-1 gap-6">
+                  <div className="z-10 relative shrink-0 flex gap-4 items-center mt-[3px]">
+                    <div className="w-2 h-2 bg-blue-100 rounded-full -translate-x-[3px]"></div>
+                    <DateRange
                     dateRange={experience.dateRange}
-                    className="mt-[4px] text-lg text-blue-200"
-                  />
+                    className="text-lg text-blue-200"
+                    />
+                  </div>
                   <ExperienceCard
                     experience={experience}
                     key={experience.slug}
@@ -265,19 +266,19 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
               </>
             ) : (
               <>
-                <div className="flex flex-row-reverse items-start flex-1 gap-6 mr-12">
-                  <DateRange
-                    dateRange={experience.dateRange}
-                    className="mt-[4px] text-lg text-blue-200"
-                  />
+                <div className="flex flex-row-reverse items-start flex-1 gap-6">
+                  <div className="z-10 relative shrink-0 flex gap-4 items-center mt-[3px]">
+                    <DateRange
+                      dateRange={experience.dateRange}
+                      className="text-lg text-blue-200"
+                    />
+                    <div className="w-2 h-2 bg-blue-100 rounded-full translate-x-[5px]"></div>
+                  </div>
                   <ExperienceCard
                     experience={experience}
                     align="right"
                     key={experience.slug}
                   />
-                </div>
-                <div className="w-[2px] absolute left-1/2 h-full bg-blue-400">
-                  <div className="w-2 h-2 mt-[11px] -translate-x-[3px] bg-blue-100 rounded-full"></div>
                 </div>
                 <div className="flex-1"></div>
               </>
