@@ -4,14 +4,15 @@ import DefaultLayout from "@/components/layout/DefaultLayout";
 import { SectionHeader } from "@/components/ui/Typography";
 import { getHomePageData } from "../../sanity/lib/api";
 import { SectionContainer } from "@/components/ui/Container";
-import { ExperienceList, ProjectCard, ProjectCardList } from "@/components/ui/Card";
+import { ProjectCardList } from "@/components/ui/Card";
+import { ExperienceList } from "@/components/ui/Timeline";
 import Link from "next/link";
 import { Qoute } from "@/components/ui/Qoute";
 import { AboutMe } from "@/components/AboutMe";
 
 export default async function Home() {
   const data = await getHomePageData();
-  console.log(data);
+  // console.log(data);
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
@@ -41,7 +42,7 @@ export default async function Home() {
         <AboutMe />
       </SectionContainer>
 
-      <SectionContainer>
+      <SectionContainer className="z-10">
         <SectionHeader>Feature Projects</SectionHeader>
         <ProjectCardList
           projects={data.projects}
