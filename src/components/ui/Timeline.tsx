@@ -18,7 +18,12 @@ export function ExperienceCard({
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
     >
-      <h3 className="text-lg font-semibold sm:text-2xl">
+      <h3
+        className="text-lg font-semibold sm:text-2xl"
+        style={{
+          textAlign: align === "left" ? "left" : "right",
+        }}
+      >
         {experience.organization}
       </h3>
       <div
