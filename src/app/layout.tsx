@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Particles from "@/components/Particles";
 import { Raleway } from "next/font/google";
 import "./globals.css";
+import { GlobalWrapper } from "@/components/GlobalWrapper";
 
 const raleway = Raleway({ display: "swap", subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
         <div className="z-20">
           <Header />
         </div>
-        {children}
+        <GlobalWrapper>{children}</GlobalWrapper>
         <Footer />
         <Analytics />
         <Particles />

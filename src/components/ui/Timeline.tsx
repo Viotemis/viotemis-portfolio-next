@@ -1,7 +1,15 @@
-import { DateRange } from "./DateRange";
+"use client";
 
-function VerticalLine() {
-  return <div className="w-[2px] absolute left-1/2 h-full bg-blue-400"></div>;
+import { cn } from "@/lib/utils";
+import { DateRange } from "./DateRange";
+import { motion } from "framer-motion";
+
+function Dot({ className }: { className?: string }) {
+  return <div className={cn(`w-2 h-2 bg-blue-100 rounded-full`, className)} />;
+}
+
+function VSpacer({ className }: { className?: string }) {
+  return <div className={cn("flex-none w-6", className)} />;
 }
 
 export function ExperienceCard({
@@ -12,8 +20,22 @@ export function ExperienceCard({
   align?: "left" | "right";
 }) {
   return (
-    <div
-      className="flex flex-col space-y-1 lg:space-y-2"
+    <motion.div
+      // whileInView="inView"
+      // variants={{
+      //   initial: {
+      //     opacity: 0,
+      //     y: 20,
+      //   },
+      //   inView: {
+      //     opacity: 1,
+      //     y: 0,
+      //     transition: {
+      //       duration: 0.3,
+      //     },
+      //   },
+      // }}
+      className="flex flex-col space-y-1 rounded-md cursor-default md:px-4 md:py-4 lg:space-y-2 md:hover:bg-slate-100/10 trans"
       style={{
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
@@ -29,39 +51,59 @@ export function ExperienceCard({
       <div
         className="flex items-baseline justify-between"
         style={{
-          textAlign: align === "left" ? "left" : "right",
+          textAlign: align,
         }}
       >
         <span className="text-base italic">{experience.title}</span>
       </div>
       <div
         style={{
-          textAlign: align === "left" ? "left" : "right",
+          textAlign: align,
         }}
       >
-        <p className="text-xs leading-6 md:text-sm text-slate-300">
+        <p className="text-xs sm:leading-6 md:text-sm text-slate-300 md:leading-6">
           {experience.description}
         </p>
       </div>
       {/* <div>
         <BlockContent value={experience.content} />
       </div> */}
-    </div>
+    </motion.div>
   );
 }
 
 export function ExperienceList({ experiences }: { experiences: Experience[] }) {
   // console.log("experiences", experiences);
   return (
-    <div className="grid mx-6 sm:mx-8">
+    <motion.div
+      className="grid mx-6 sm:mx-8"
+      // initial="initial"
+      // whileInView={"inView"}
+      // variants={{
+      //   initial: {
+      //     opacity: 0,
+      //     y: 20,
+      //   },
+      //   inView: {
+      //     opacity: 1,
+      //     y: 0,
+      //     transition: {
+      //       duration: 0.3,
+      //       delay: 0.1,
+      //       staggerChildren: 0.2,
+      //       delayChildren: 0.1,
+      //     },
+      //   },
+      // }}
+    >
       {experiences.map((experience, i) => (
-        <div className="relative flex" key={i}>
+        <div className="relative flex group" key={i}>
           <div className="relative flex items-start md:hidden">
             <div className="absolute z-10 w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[48px]"></div>
             <div className="flex flex-col items-start flex-1 min-w-0 gap-2 my-10 ml-6 sm:gap-8 sm:ml-8 sm:flex-row">
               <DateRange
                 dateRange={experience.dateRange}
-                className="mt-1 text-blue-200"
+                className="text-lg text-blue-200"
               />
               <ExperienceCard experience={experience} key={experience.slug} />
             </div>
@@ -70,49 +112,45 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
           <div className="relative hidden w-full py-8 md:flex">
             {i % 2 === 0 ? (
               <>
-                <div className="flex-1"></div>
-                <div className="flex flex-col items-start flex-1 gap-3 lg:gap-6 lg:flex-row">
-                  <div className="z-10 relative shrink-0 flex gap-4 items-center mt-[3px]">
-                    <div className="w-2 h-2 bg-blue-100 rounded-full -translate-x-[3px]"></div>
-                    <DateRange
-                      dateRange={experience.dateRange}
-                      className="text-lg text-blue-200"
-                    />
-                  </div>
-                  <div className="flex">
-                    <div className="flex-none w-6 lg:w-0"></div>
-                    <ExperienceCard
-                      experience={experience}
-                      key={experience.slug}
-                    />
-                  </div>
+                <div className="flex items-start justify-end flex-1 pt-5">
+                  <DateRange
+                    dateRange={experience.dateRange}
+                    className="text-lg text-blue-200 trans group-hover:font-semibold"
+                  />
+                  <VSpacer />
+                </div>
+                <Dot className="translate-x-[1px] translate-y-7" />
+                <div className="flex items-start flex-1">
+                  <VSpacer className="w-3" />
+                  <ExperienceCard
+                    experience={experience}
+                    key={experience.slug}
+                  />
                 </div>
               </>
             ) : (
               <>
-                <div className="flex flex-col items-end flex-1 gap-2 lg:items-start lg:flex-row-reverse lg:gap-6">
-                  <div className="z-10 relative shrink-0 flex gap-4 items-center mt-[3px]">
-                    <DateRange
-                      dateRange={experience.dateRange}
-                      className="text-lg text-blue-200"
-                    />
-                    <div className="w-2 h-2 bg-blue-100 rounded-full translate-x-[5px]"></div>
-                  </div>
-                  <div className="flex flex-row-reverse">
-                    <div className="flex-none w-6 lg:w-0"></div>
-                    <ExperienceCard
-                      experience={experience}
-                      align="right"
-                      key={experience.slug}
-                    />
-                  </div>
+                <div className="flex flex-row-reverse items-start flex-1">
+                  <VSpacer className="w-3" />
+                  <ExperienceCard
+                    experience={experience}
+                    align="right"
+                    key={experience.slug}
+                  />
                 </div>
-                <div className="flex-1"></div>
+                <Dot className="translate-x-[1px] translate-y-7" />
+                <div className="flex items-start flex-1 pt-5">
+                  <VSpacer />
+                  <DateRange
+                    dateRange={experience.dateRange}
+                    className="text-lg text-blue-200 trans group-hover:font-semibold"
+                  />
+                </div>
               </>
             )}
           </div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 }

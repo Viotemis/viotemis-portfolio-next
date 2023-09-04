@@ -18,7 +18,7 @@ export function ProjectCard({
 }) {
   return (
     <div
-      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer sm:space-y-4 md:h-auto sm:p-5 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
+      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer group sm:space-y-4 md:h-auto sm:p-5 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
       onClick={(e) => {
         e.preventDefault();
         handleOpen(project);
@@ -26,7 +26,7 @@ export function ProjectCard({
     >
       {/* Title */}
       <div className="flex items-center flex-none gap-3">
-        <h3 className="text-lg font-medium truncate sm:text-xl lg:text-2xl">
+        <h3 className="text-lg font-medium truncate sm:text-xl lg:text-2xl trans">
           {project.title}
         </h3>
         <div className="items-center hidden gap-3 sm:flex">
