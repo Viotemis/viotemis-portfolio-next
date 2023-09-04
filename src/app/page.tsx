@@ -16,7 +16,7 @@ export default async function Home() {
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
-        <div className="flex flex-col items-center space-y-2 md:space-y-4 md:text-4xl">
+        <div className="flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-4 md:text-4xl">
           <h1 className="text-[2rem] text-center tracking-normal sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.5rem] 2xl:text-[4rem] sm:tracking-wider">
             Hello, {"I'm "}
             <span className="font-bold primary-gradient">Bowang Lan</span>

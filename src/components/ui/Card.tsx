@@ -18,14 +18,14 @@ export function ProjectCard({
 }) {
   return (
     <div
-      className="flex flex-col h-auto p-4 border cursor-pointer md:h-auto sm:p-4 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
+      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer sm:space-y-4 md:h-auto sm:p-5 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
       onClick={(e) => {
         e.preventDefault();
         handleOpen(project);
       }}
     >
       {/* Title */}
-      <div className="flex items-center flex-none gap-3 mb-2">
+      <div className="flex items-center flex-none gap-3">
         <h3 className="text-lg font-medium truncate sm:text-xl lg:text-2xl">
           {project.title}
         </h3>
@@ -44,7 +44,7 @@ export function ProjectCard({
       </div>
 
       {/* Description */}
-      <div className="mb-2 text-sm leading-6 line-clamp-2 text-slate-300">
+      <div className="text-sm leading-6 md:leading-7 line-clamp-2 text-slate-300">
         {project.description}
       </div>
 
@@ -55,7 +55,7 @@ export function ProjectCard({
         {project.tags.map((tag) => (
           <span
             key={tag.name}
-            className="inline-flex items-center px-3 py-1.5 mt-1 text-sm font-medium text-white rounded-full cursor-default bg-blue-500/20 hover:bg-blue-500/40 trans"
+            className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white rounded-full cursor-default bg-blue-500/20 hover:bg-blue-500/40 trans"
           >
             <div className="relative mr-1 lg:mr-1.5 -translate-x-0 fcenter">
               <Image

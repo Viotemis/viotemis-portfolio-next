@@ -10,7 +10,7 @@ export function DateRange({
   return (
     <div
       className={cn(
-        "flex items-center flex-none gap-1 text-sm text-slate-400",
+        "flex items-center flex-none gap-1 text-sm md:text-base text-slate-400",
         className
       )}
     >
