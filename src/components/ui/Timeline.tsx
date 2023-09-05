@@ -35,7 +35,7 @@ export function ExperienceCard({
       //     },
       //   },
       // }}
-      className="flex flex-col space-y-1 rounded-md cursor-default md:px-4 md:py-4 lg:space-y-2 md:hover:bg-slate-100/10 trans"
+      className="flex flex-col space-y-1 cursor-default md:px-4 md:py-4 lg:p-6 lg:space-y-2 md:hover:bg-blue-400/10 trans"
       style={{
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
@@ -108,7 +108,7 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
               <ExperienceCard experience={experience} key={experience.slug} />
             </div>
           </div>
-          <div className="w-[2px] absolute  md:left-1/2 h-full bg-blue-400"></div>
+          <div className="w-[2px] absolute  md:left-1/2 h-full bg-blue-500"></div>
           <div className="relative hidden w-full py-8 md:flex">
             {i % 2 === 0 ? (
               <>
@@ -117,11 +117,11 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
                     dateRange={experience.dateRange}
                     className="text-lg text-blue-200 trans group-hover:font-semibold"
                   />
-                  <VSpacer />
+                  <VSpacer className="lg:w-8" />
                 </div>
                 <Dot className="translate-x-[1px] translate-y-7" />
-                <div className="flex items-start flex-1">
-                  <VSpacer className="w-3" />
+                <div className="flex items-start flex-1 lg:-translate-y-2">
+                  <VSpacer className="w-3 lg:w-4" />
                   <ExperienceCard
                     experience={experience}
                     key={experience.slug}
@@ -130,8 +130,8 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
               </>
             ) : (
               <>
-                <div className="flex flex-row-reverse items-start flex-1">
-                  <VSpacer className="w-3" />
+                <div className="flex flex-row-reverse items-start flex-1 lg:-translate-y-2">
+                  <VSpacer className="w-3 lg:w-4" />
                   <ExperienceCard
                     experience={experience}
                     align="right"
@@ -140,7 +140,7 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
                 </div>
                 <Dot className="translate-x-[1px] translate-y-7" />
                 <div className="flex items-start flex-1 pt-5">
-                  <VSpacer />
+                  <VSpacer className="lg:w-8" />
                   <DateRange
                     dateRange={experience.dateRange}
                     className="text-lg text-blue-200 trans group-hover:font-semibold"

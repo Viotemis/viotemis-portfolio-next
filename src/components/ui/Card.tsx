@@ -18,7 +18,7 @@ export function ProjectCard({
 }) {
   return (
     <div
-      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer group md:space-y-4 md:h-auto sm:p-5 md:p-6 hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
+      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer group md:space-y-4 md:h-auto sm:p-5 md:p-6 md:hover:bg-blue-400/10 trans border-slate-400/50 hover:border-blue-500/80"
       onClick={(e) => {
         e.preventDefault();
         handleOpen(project);
