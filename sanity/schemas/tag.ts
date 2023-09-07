@@ -34,5 +34,16 @@ export default defineType({
         maxLength: 96,
       },
     }),
+    defineField({
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "category" }],
+        },
+      ],
+    }),
   ],
 });

@@ -24,10 +24,8 @@ export default defineType({
       title: "Type",
       type: "string",
       options: {
-        list: [
-          { title: "Website", value: "website" },
-        ]
-      }
+        list: [{ title: "Website", value: "website" }],
+      },
     }),
     defineField({
       name: "showOnResume",
@@ -59,6 +57,17 @@ export default defineType({
         {
           type: "reference",
           to: [{ type: "tag" }],
+        },
+      ],
+    }),
+    defineField({
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "category" }],
         },
       ],
     }),
