@@ -5,7 +5,7 @@ import { DateRange } from "./DateRange";
 import { motion } from "framer-motion";
 
 function Dot({ className }: { className?: string }) {
-  return <div className={cn(`w-2 h-2 bg-blue-100 rounded-full`, className)} />;
+  return <div className={cn(`w-2 h-2 md:w-2.5 md:h-2.5 trans group-hover:scale-115 bg-blue-200 group-hover:bg-blue-100 rounded-full`, className)} />;
 }
 
 function VSpacer({ className }: { className?: string }) {
