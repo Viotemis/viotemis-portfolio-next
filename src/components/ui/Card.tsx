@@ -53,20 +53,7 @@ export function ProjectCard({
       {/* Tags */}
       <div className="flex flex-wrap items-center flex-none gap-2">
         {project.tags.map((tag) => (
-          <span
-            key={tag.name}
-            className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white rounded-full cursor-default bg-blue-500/20 hover:bg-blue-500/40 trans"
-          >
-            <div className="relative mr-1 lg:mr-1.5 -translate-x-0 fcenter">
-              <Image
-                src={"/icons/" + (tag.iconFileName || tag.slug + ".svg")}
-                alt={tag.name}
-                width={18 * (tag.iconScale || 1)}
-                height={18 * (tag.iconScale || 1)}
-              />
-            </div>
-            <div className="text-xs">{tag.name}</div>
-          </span>
+          <Tag tag={tag} key={tag.name} />
         ))}
       </div>
     </div>
@@ -170,6 +157,10 @@ export function ProjectCardList({
               <div className="p-1.5 sm:p-2 md:px-5 py-3 md:py-4 text-xs sm:text-sm leading-6 sm:leading-8 md:tracking-wide text-center md:text-left rounded-md bg-slate-800/80 w-full">
                 <p>{selectedProject.description}</p>
               </div>
+
+              {selectedProject.content && (
+                <BlockContent value={selectedProject.content} />
+              )}
             </div>
 
             <div className="flex flex-wrap items-center justify-center flex-none gap-2 mx-auto md:justify-start md:mx-0">

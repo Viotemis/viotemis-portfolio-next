@@ -36,6 +36,7 @@ export function getProjects(): Promise<Project[]> {
     githubUrl,
     dateRange,
     tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
+    content,
   } | order(dateRange.start desc)`);
 }
 
