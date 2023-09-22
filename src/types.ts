@@ -31,6 +31,7 @@ interface Project {
   githubUrl?: string;
   dateRange: DateRange;
   tags: Tag[];
+  content: any[];
 }
 
 interface Experience {
