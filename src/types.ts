@@ -10,11 +10,17 @@ interface SanityImage {
   asset: any;
 }
 
+interface Category {
+  title: string;
+  slug: string;
+}
+
 interface Tag {
   slug: string;
   name: string;
   iconFileName?: string;
   iconScale?: number;
+  categories: Category[];
 }
 
 interface DateRange {
