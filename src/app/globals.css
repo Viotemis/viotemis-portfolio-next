@@ -62,6 +62,12 @@
       rgb(var(--primary-950)),
       rgba(var(--background), 0.8));
 
+  --bg-hover: rgba(var(--primary-500), 0.1);
+
+  --border: hsla(0, 0%, 100%, 0.3);
+  --border-hover: rgba(var(--primary-500), 0.8);
+
+  --radius: 0px;
 
   /* font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif; */
   /* font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif; */

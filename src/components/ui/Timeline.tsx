@@ -35,7 +35,7 @@ export function ExperienceCard({
       //     },
       //   },
       // }}
-      className="flex flex-col space-y-1 cursor-default md:px-4 md:py-4 lg:p-6 lg:space-y-2 md:hover:bg-blue-400/10 trans"
+      className="flex flex-col space-y-1 cursor-default md:px-4 md:py-4 lg:p-6 lg:space-y-2 trans md:hover:bg-[var(--bg-hover)]"
       style={{
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
