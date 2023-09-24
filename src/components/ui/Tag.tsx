@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export function Tag({ tag }: { tag: Tag }) {
+export function TagPill({
+  tag,
+  size = "md",
+}: {
+  tag: Tag;
+  size?: "sm" | "md" | "lg";
+}) {
   return (
     <span
       key={tag.name}

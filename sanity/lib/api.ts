@@ -90,7 +90,7 @@ export async function getHomePageData(): Promise<{
   };
 }
 
-export async function getTechItems(): Promise<Record<string, Tag[]>> {
+export async function getTechItems(): Promise<Tag[]> {
   const data = await sanity_fetch(`*[_type == "tag" && categories != null]{
     name, icon, "slug": slug.current, iconFileName, iconScale,
     categories[] -> { title, "slug": slug.current },

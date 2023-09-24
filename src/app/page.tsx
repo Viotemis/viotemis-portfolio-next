@@ -2,17 +2,18 @@ import { SocialMedia } from "@/components/SocialMedia";
 import { ContactMeButton, DownloadResumeButton } from "@/components/ui/Button";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import { SectionHeader } from "@/components/ui/Typography";
-import { getHomePageData } from "../../sanity/lib/api";
+import { getHomePageData, getTechItems } from "../../sanity/lib/api";
 import { SectionContainer } from "@/components/ui/Container";
 import { ProjectCardList } from "@/components/ui/Card";
 import { ExperienceList } from "@/components/ui/Timeline";
 import Link from "next/link";
 import { Qoute } from "@/components/ui/Qoute";
 import { AboutMe } from "@/components/AboutMe";
+import { TechSection } from "@/components/TechSection";
 
 export default async function Home() {
   const data = await getHomePageData();
-  // console.log(data);
+  const techItems = await getTechItems();
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
@@ -40,6 +41,14 @@ export default async function Home() {
       <SectionContainer>
         <SectionHeader>About Me</SectionHeader>
         <AboutMe />
+      </SectionContainer>
+
+      {/* tech section */}
+      <SectionContainer>
+        <SectionHeader>Technologies</SectionHeader>
+        <div className="flex flex-wrap justify-center">
+          <TechSection data={techItems} />
+        </div>
       </SectionContainer>
 
       <SectionContainer className="z-10">

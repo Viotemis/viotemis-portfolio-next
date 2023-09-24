@@ -5,7 +5,7 @@ import { DateRange } from "./DateRange";
 import { GithubLink, WebsiteLink } from "./Link";
 import { useState, useEffect } from "react";
 import Modal from "../ui/Modal";
-import { Tag } from "../ui/Tag";
+import { TagPill } from "../ui/Tag";
 import { cn } from "@/lib/utils";
 import BlockContent from "./BlockContent";
 
@@ -53,7 +53,7 @@ export function ProjectCard({
       {/* Tags */}
       <div className="flex flex-wrap items-center flex-none gap-2">
         {project.tags.map((tag) => (
-          <Tag tag={tag} key={tag.name} />
+          <TagPill tag={tag} key={tag.name} />
         ))}
       </div>
     </div>
@@ -165,7 +165,7 @@ export function ProjectCardList({
 
             <div className="flex flex-wrap items-center justify-center flex-none gap-2 mx-auto md:justify-start md:mx-0">
               {selectedProject.tags.map((tag) => (
-                <Tag tag={tag} key={tag.name} />
+                <TagPill tag={tag} key={tag.name} />
               ))}
             </div>
           </>

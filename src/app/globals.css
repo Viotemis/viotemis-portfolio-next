@@ -62,7 +62,7 @@
       rgb(var(--primary-950)),
       rgba(var(--background), 0.8));
 
-  --bg-hover: rgba(var(--primary-500), 0.1);
+  --bg-hover: rgba(var(--primary-400), 0.2);
 
   --border: hsla(0, 0%, 100%, 0.3);
   --border-hover: rgba(var(--primary-500), 0.8);
