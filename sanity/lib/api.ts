@@ -89,3 +89,20 @@ export async function getHomePageData(): Promise<{
     qoute: qoutes[Math.floor(Math.random() * qoutes.length)],
   };
 }
+
+export async function getTechItems(): Promise<Record<string, Tag[]>> {
+  const data = await sanity_fetch(`*[_type == "tag" && categories != null]{
+    name, icon, "slug": slug.current, iconFileName, iconScale,
+    categories[] -> { title, "slug": slug.current },
+  }`);
+  // categorize tags by categories
+  const categories: { [key: string]: Tag[] } = {};
+  data.forEach((tag: Tag) => {
+    if (!tag.categories) return;
+    tag.categories.forEach((category: Category) => {
+      if (!categories[category.slug]) categories[category.slug] = [];
+      categories[category.slug].push(tag);
+    });
+  });
+  return data;
+}
