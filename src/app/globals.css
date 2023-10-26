@@ -149,14 +149,24 @@ body {
   grid-template-columns: 1fr;
 }
 
-.social-icon {
+.social-icon-md {
   width: 2.75rem;
   height: 2.75rem;
 }
 
-.social-icon svg {
+.social-icon-md svg {
   width: 20px;
   height: 20px;
+}
+
+.social-icon-sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.social-icon-sm svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* sm */
@@ -177,8 +187,13 @@ body {
     padding-right: 2rem;
   }
 
-  .social-icon {
+  .social-icon-md {
     width: 3rem;
     height: 3rem;
+  }
+
+  .social-icon-sm svg {
+    width: 24px;
+    height: 24px;
   }
 }
