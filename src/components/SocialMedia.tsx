@@ -10,19 +10,18 @@ function SocialMediaItem({
   icon,
   url,
   name,
+  size = "md",
 }: {
   icon: React.ReactNode;
   url: string;
   name: string;
+  size?: "sm" | "md";
 }) {
   return (
     <span
-      className="social-icon hover:scale-95 bg-gray-100/20 hover:bg-[var(--primary)] fcenter relative cursor-pointer trans group overflow-hidden"
+      className={`social-icon-${size} hover:scale-95 bg-gray-100/20 hover:bg-[var(--primary)] fcenter relative cursor-pointer trans group overflow-hidden`}
       onClick={(e) => {
         e.preventDefault();
-        // va.track("ClickSocialMedia", {
-        //   name,
-        // });
         window.open(url, "_blank");
       }}
     >
@@ -36,23 +35,26 @@ function SocialMediaItem({
   );
 }
 
-export function SocialMedia() {
+export function SocialMedia({ size = "md" }: { size?: "sm" | "md" }) {
   return (
     <div className="flex items-center gap-6">
       <SocialMediaItem
         icon={<FaLinkedinIn />}
         url={LINKEDIN_URL}
         name="LinkedIn"
+        size={size}
       />
       <SocialMediaItem
         icon={<FaGithub />}
         url={GITHUB_URL}
         name="Github"
+        size={size}
       />
       <SocialMediaItem
         icon={<AiFillMail />}
         url={EMAIL_URL}
         name="Email"
+        size={size}
       />
       {/* <SocialMediaItem icon={< />} url={GITHUB_URL} /> */}
     </div>
