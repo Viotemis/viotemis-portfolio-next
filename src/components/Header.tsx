@@ -5,19 +5,23 @@ import { MobileMenu } from "./MobileMenu";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { navItems } from "@/constants";
+import Link from "next/link";
 
 function NavItem({
   text,
   active,
+  href,
   className = "",
   ...props
 }: {
   text: string;
   active: boolean;
-} & React.HTMLAttributes<HTMLDivElement>) {
+} & React.ComponentPropsWithoutRef<"a">) {
   return (
-    <div
+    <Link
+      href={href as string}
       data-active={active}
+      aria-label={text}
       className={cn(
         "z-10 px-6 md:py-3 bg-transparent cursor-pointer trans nav-item",
         className
@@ -25,7 +29,7 @@ function NavItem({
       {...props}
     >
       {text}
-    </div>
+    </Link>
   );
 }
 
@@ -118,6 +122,7 @@ export default function Header() {
             <NavItem
               {...item}
               key={i}
+              href={item.href}
               active={item.href === pathname}
               onMouseEnter={(e) => {
                 hoverBox.current!.animate(

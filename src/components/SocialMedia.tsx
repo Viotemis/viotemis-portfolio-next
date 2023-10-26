@@ -18,12 +18,11 @@ function SocialMediaItem({
   size?: "sm" | "md";
 }) {
   return (
-    <span
+    <a
       className={`social-icon-${size} hover:scale-95 bg-gray-100/20 hover:bg-[var(--primary)] fcenter relative cursor-pointer trans group overflow-hidden`}
-      onClick={(e) => {
-        e.preventDefault();
-        window.open(url, "_blank");
-      }}
+      target="_blank"
+      href={url}
+      aria-label={name + " Link"}
     >
       <div className="absolute top-[50%] group-hover:translate-y-[-250%] translate-y-[-50%] trans">
         {icon}
@@ -31,7 +30,7 @@ function SocialMediaItem({
       <div className="absolute top-[50%] group-hover:translate-y-[-50%] translate-y-[250%] trans">
         {icon}
       </div>
-    </span>
+    </a>
   );
 }
 

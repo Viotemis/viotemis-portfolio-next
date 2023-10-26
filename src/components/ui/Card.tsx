@@ -30,16 +30,24 @@ export function ProjectCard({
           {project.title}
         </h3>
         <div className="items-center hidden gap-3 sm:flex">
-          {project.websiteUrl && <WebsiteLink url={project.websiteUrl} />}
-          {project.githubUrl && <GithubLink url={project.githubUrl} />}
+          {project.websiteUrl && (
+            <WebsiteLink url={project.websiteUrl} name={project.title} />
+          )}
+          {project.githubUrl && (
+            <GithubLink url={project.githubUrl} name={project.title} />
+          )}
         </div>
         <div className="flex-1 min-w-0"></div>
         <div className="hidden sm:block shrink-0">
           <DateRange dateRange={project.dateRange} />
         </div>
         <div className="flex items-center gap-3 sm:hidden">
-          {project.websiteUrl && <WebsiteLink url={project.websiteUrl} />}
-          {project.githubUrl && <GithubLink url={project.githubUrl} />}
+          {project.websiteUrl && (
+            <WebsiteLink url={project.websiteUrl} name={project.title} />
+          )}
+          {project.githubUrl && (
+            <GithubLink url={project.githubUrl} name={project.title} />
+          )}
         </div>
       </div>
 
@@ -121,10 +129,16 @@ export function ProjectCardList({
                     selectedProject.githubUrl) && (
                     <div className="flex items-center gap-4">
                       {selectedProject.websiteUrl && (
-                        <WebsiteLink url={selectedProject.websiteUrl} />
+                        <WebsiteLink
+                          url={selectedProject.websiteUrl}
+                          name={selectedProject.title}
+                        />
                       )}
                       {selectedProject.githubUrl && (
-                        <GithubLink url={selectedProject.githubUrl} />
+                        <GithubLink
+                          url={selectedProject.githubUrl}
+                          name={selectedProject.title}
+                        />
                       )}
                     </div>
                   )}
@@ -142,10 +156,16 @@ export function ProjectCardList({
                 {(selectedProject.websiteUrl || selectedProject.githubUrl) && (
                   <div className="flex items-center gap-3">
                     {selectedProject.websiteUrl && (
-                      <WebsiteLink url={selectedProject.websiteUrl} />
+                      <WebsiteLink
+                        url={selectedProject.websiteUrl}
+                        name={selectedProject.title}
+                      />
                     )}
                     {selectedProject.githubUrl && (
-                      <GithubLink url={selectedProject.githubUrl} />
+                      <GithubLink
+                        url={selectedProject.githubUrl}
+                        name={selectedProject.title}
+                      />
                     )}
                   </div>
                 )}
