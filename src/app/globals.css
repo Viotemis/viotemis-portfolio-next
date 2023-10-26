@@ -160,13 +160,13 @@ body {
 }
 
 .social-icon-sm {
-  width: 2rem;
-  height: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .social-icon-sm svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 /* sm */
@@ -192,7 +192,7 @@ body {
     height: 3rem;
   }
 
-  .social-icon-sm svg {
+  .social-icon-md svg {
     width: 24px;
     height: 24px;
   }
