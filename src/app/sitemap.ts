@@ -1,15 +1,16 @@
+import { DOMAIN } from "@/constants";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://bowanglan.dev",
+      url: DOMAIN,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://acme.com/projects",
+      url: `${DOMAIN}/projects`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
