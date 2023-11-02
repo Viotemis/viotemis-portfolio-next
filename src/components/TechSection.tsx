@@ -15,7 +15,7 @@ const Tab = ({
 }) => {
   return (
     <div
-      className="px-6 py-3 cursor-pointer md:px-8 md:py-4 trans hover:bg-slate-400/10"
+      className="px-6 py-3 cursor-pointer lg:px-8 lg:py-4 trans hover:bg-slate-400/10"
       style={{
         backgroundColor: active ? "var(--bg-hover)" : "",
       }}
@@ -90,7 +90,7 @@ export function TechSection({ data }: { data: Tag[] }) {
   });
 
   return (
-    <div className="flex flex-col items-center w-full space-y-4 md:space-y-8">
+    <div className="flex flex-col items-center w-full space-y-8">
       <div className="flex flex-wrap justify-center">
         {tabs.map((tab, i) => (
           <Tab
