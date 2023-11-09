@@ -7,11 +7,12 @@ export function IconContainer({
   size = 44,
   onClick,
   children,
+  ...rest
 }: {
   size?: number;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
-}) {
+} & React.ComponentPropsWithoutRef<"button">) {
   return (
     <button
       className="rounded-full bg-gray-100/10 trans hover:bg-gray-100/30 fcenter"
@@ -20,6 +21,7 @@ export function IconContainer({
         width: `${size}px`,
         height: `${size}px`,
       }}
+      {...rest}
     >
       {children}
     </button>

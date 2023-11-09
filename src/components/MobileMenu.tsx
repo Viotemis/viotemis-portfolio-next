@@ -11,7 +11,7 @@ export const MenuToggle = ({
 }: {
   toggle: React.MouseEventHandler<HTMLButtonElement>;
 }) => (
-  <IconContainer onClick={toggle}>
+  <IconContainer onClick={toggle} aria-label="Menu button">
     <svg width="24" height="24" viewBox="0 0 24 24">
       <Path
         variants={{
