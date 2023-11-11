@@ -23,7 +23,7 @@ function NavItem({
       data-active={active}
       aria-label={text}
       className={cn(
-        "z-10 px-6 md:py-3 bg-transparent cursor-pointer trans nav-item",
+        "z-10 px-6 md:py-3 bg-transparent cursor-pointer trans nav-item rounded-lg",
         className
       )}
       {...props}

@@ -15,7 +15,7 @@ const Tab = ({
 }) => {
   return (
     <div
-      className="px-6 py-3 cursor-pointer lg:px-8 lg:py-4 trans hover:bg-slate-400/10"
+      className="px-6 py-2 cursor-pointer lg:px-8 lg:py-4 trans hover:bg-slate-200/20 rounded-lg"
       style={{
         backgroundColor: active ? "var(--bg-hover)" : "",
       }}
@@ -28,17 +28,15 @@ const Tab = ({
 
 // const transition = { type: "spring", stiffness: 500, damping: 50, mass: 1 };
 
-const variants = {
-  in: { scaleY: 1, opacity: 1 },
-  out: { scaleY: 0, opacity: 0, zIndex: -1 },
-  tapped: { scale: 0.98, opacity: 0.5, transition: { duration: 0.1 } },
-};
-
 function TagCircle({ tag }: { tag: Tag }) {
   // const [isPresent, safeToRemove] = usePresence();
   return (
     <div
-      className="flex flex-col items-center hover:bg-[var(--bg-hover)] w-28 h-28 rounded-full trans bg-slate-400/10"
+      className="flex flex-col items-center hover:bg-[var(--bg-hover)] trans bg-slate-400/10 rounded-lg p-2"
+      style={{
+        width: 120,
+        height: 120,
+      }}
       // layout={true}
       // initial="out"
       // style={{
@@ -54,8 +52,8 @@ function TagCircle({ tag }: { tag: Tag }) {
         <Image
           src={"/icons/" + (tag.iconFileName || tag.slug + ".svg")}
           alt={tag.name}
-          width={36 * (tag.iconScale || 1)}
-          height={36 * (tag.iconScale || 1)}
+          width={40 * (tag.iconScale || 1)}
+          height={40 * (tag.iconScale || 1)}
         />
       </div>
       <div className="text-sm text-center">{tag.name}</div>
@@ -91,7 +89,7 @@ export function TechSection({ data }: { data: Tag[] }) {
 
   return (
     <div className="flex flex-col items-center w-full space-y-8">
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center gap-1 md:gap-2">
         {tabs.map((tab, i) => (
           <Tab
             key={i}

@@ -1,11 +1,16 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { DateRange } from "./DateRange";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 function Dot({ className }: { className?: string }) {
-  return <div className={cn(`w-2 h-2 md:w-2.5 md:h-2.5 trans group-hover:scale-115 bg-blue-200 group-hover:bg-blue-100 rounded-full`, className)} />;
+  return (
+    <div
+      className={cn(
+        `w-2 h-2 md:w-2.5 md:h-2.5 trans group-hover:scale-115 bg-blue-200 group-hover:bg-blue-100 rounded-full`,
+        className
+      )}
+    />
+  );
 }
 
 function VSpacer({ className }: { className?: string }) {
@@ -20,7 +25,7 @@ export function ExperienceCard({
   align?: "left" | "right";
 }) {
   return (
-    <motion.div
+    <div
       // whileInView="inView"
       // variants={{
       //   initial: {
@@ -35,7 +40,7 @@ export function ExperienceCard({
       //     },
       //   },
       // }}
-      className="flex flex-col space-y-1 cursor-default md:px-4 md:py-4 lg:p-6 lg:space-y-2 trans md:hover:bg-[var(--bg-hover)]"
+      className="flex flex-col space-y-1 cursor-default md:px-4 md:py-4 lg:p-6 lg:space-y-2 trans md:hover:bg-[var(--bg-hover)] rounded-lg"
       style={{
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
@@ -68,14 +73,14 @@ export function ExperienceCard({
       {/* <div>
         <BlockContent value={experience.content} />
       </div> */}
-    </motion.div>
+    </div>
   );
 }
 
 export function ExperienceList({ experiences }: { experiences: Experience[] }) {
   // console.log("experiences", experiences);
   return (
-    <motion.div
+    <div
       className="grid mx-6 sm:mx-8"
       // initial="initial"
       // whileInView={"inView"}
@@ -151,6 +156,6 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
           </div>
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }

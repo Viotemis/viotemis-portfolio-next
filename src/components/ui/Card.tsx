@@ -18,7 +18,7 @@ export function ProjectCard({
 }) {
   return (
     <div
-      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer group md:space-y-4 md:h-auto sm:p-5 md:p-6 trans border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--bg-hover)]"
+      className="flex flex-col h-auto p-4 space-y-3 border cursor-pointer group md:space-y-4 md:h-auto sm:p-5 md:p-6 trans border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--bg-hover)] rounded-lg"
       onClick={(e) => {
         e.preventDefault();
         handleOpen(project);
