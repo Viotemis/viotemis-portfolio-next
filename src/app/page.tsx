@@ -14,13 +14,16 @@ import { TechSection } from "@/components/TechSection";
 export default async function Home() {
   const data = await getHomePageData();
   const techItems = await getTechItems();
+  console.log("render home page");
   return (
     <DefaultLayout>
       <section className="h-[var(--h-main)] fcenter">
         <div className="flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-4 md:text-4xl">
           <h1 className="text-[2rem] text-center tracking-normal sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.5rem] 2xl:text-[4rem] sm:tracking-wider">
             Hello, {"I'm "}
-            <span className="font-bold primary-gradient">Bowang (Jeffrey) Lan</span>
+            <span className="font-bold primary-gradient">
+              Bowang (Jeffrey) Lan
+            </span>
           </h1>
           <div className="text-base tracking-wide text-center lg:pt-3 sm:text-xl md:text-2xl text-slate-300">
             A full-stack software engineer and data scientist

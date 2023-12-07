@@ -7,7 +7,7 @@ const SANITY_SERVER =
 const sanity_fetch = (query: string) => {
   // console.log("fetching sanity", SANITY_SERVER + query);
   return fetch(SANITY_SERVER + encodeURIComponent(query), {
-    next: { revalidate: 1 },
+    next: { tags: ["sanity"] },
   })
     .then((res) => res.json())
     .then((res) => res.result);
