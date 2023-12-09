@@ -40,6 +40,21 @@ export function getProjects(): Promise<Project[]> {
   } | order(dateRange.start desc)`);
 }
 
+export async function getProject(slug: string): Promise<Project> {
+  const res =
+    await sanity_fetch(`*[_type == "project" && slug.current == "${slug}"]{
+    title,
+    "slug": slug.current,
+    description,
+    websiteUrl,
+    githubUrl,
+    dateRange,
+    tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
+    content,
+  } | order(dateRange.start desc)`);
+  return res.length === 0 ? null : res[0];
+}
+
 export function getExperiences(): Promise<Experience[]> {
   return sanity_fetch(`*[_type == "experience"]{
     title,
