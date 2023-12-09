@@ -10,7 +10,7 @@ export default function DefaultLayout({
 }) {
   return (
     <motion.main
-      className="z-10 flex flex-col items-stretch max-w-[var(--w-main)] px-4 mx-auto md:px-8 2xl:max-w-[1500px]"
+      className="z-10 flex flex-col items-stretch max-w-[var(--w-main)] px-4 mx-auto md:px-8 2xl:max-w-[1500px] w-full"
       initial="initial"
       animate="visible"
       exit="exit"
