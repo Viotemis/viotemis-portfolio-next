@@ -32,12 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={font.className + " grid h-screen max-w-screen font-light"}
-        style={{
-          gridTemplateRows: "auto 1fr auto",
-        }}
+        className={
+          font.className + " mih-h-screen max-w-screen overflow-x-hidden flex flex-col font-light"
+        }
       >
-        <div className="z-20">
+        <div className="z-20 flex-none">
           <Header />
         </div>
         <GlobalWrapper>{children}</GlobalWrapper>

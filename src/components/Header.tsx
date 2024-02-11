@@ -112,11 +112,11 @@ export default function Header() {
         >
           <div
             ref={hoverBox}
-            className="absolute inset-y-0 left-0 opacity-0 pointer-events-none bg-blue-400/20"
+            className="absolute inset-y-0 left-0 rounded-lg opacity-0 pointer-events-none bg-blue-400/20"
           ></div>
           <div
             ref={activeBox}
-            className="absolute inset-y-0 left-0 opacity-0 pointer-events-none bg-blue-700/70"
+            className="absolute inset-y-0 left-0 rounded-lg opacity-0 pointer-events-none bg-blue-700/70"
           ></div>
           {navItems.map((item, i) => (
             <NavItem

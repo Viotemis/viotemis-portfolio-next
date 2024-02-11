@@ -24,3 +24,13 @@ export function TagPill({
     </span>
   );
 }
+
+export function TagPillGroup({ tags }: { tags: Tag[] }) {
+  return (
+    <div className="flex flex-wrap items-center flex-none gap-2">
+      {tags.map((tag) => (
+        <TagPill tag={tag} key={tag.name} />
+      ))}
+    </div>
+  );
+}
