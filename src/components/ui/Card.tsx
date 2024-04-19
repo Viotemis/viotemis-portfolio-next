@@ -97,7 +97,7 @@ export function Container({
 }: {
   children: React.ReactNode;
   className?: string;
-  href?: string;
+  href: string;
 }) {
   return (
     <motion.div
@@ -107,7 +107,7 @@ export function Container({
         // ease: "easeOut",
       }}
       className={cn(
-        "relative rounded-lg border border-slate-500 group backdrop-blur-sm text-white group:text-black trans overflow-hidden hover:border-transparent",
+        "relative rounded-lg border border-slate-500 group backdrop-blur-sm text-white group:text-black trans overflow-hidden hover:border-transparent cursor-pointer",
         className
       )}
     >
@@ -119,18 +119,12 @@ export function Container({
           transitionDuration: "0.5s",
         }}
       ></div>
-      {href && (
-        <Link
-          href={href}
-          className="absolute inset-0 z-0 block opacity-0"
-        ></Link>
-      )}
+      <Link href={href} className="absolute inset-0 z-20 block opacity-0"></Link>
     </motion.div>
   );
 }
 
 export function ProjectCard({ project }: { project: Project }) {
-  const router = useRouter();
   return (
     <div className="relative rounded-lg border group md:border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--bg-hover)] trans">
       <div className="z-10 flex flex-col p-4 space-y-3 cursor-pointer md:space-y-4 sm:p-5">

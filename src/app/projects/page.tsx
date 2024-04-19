@@ -4,6 +4,7 @@ import { getProjects } from "../../../sanity/lib/api";
 import { SectionHeader } from "@/components/ui/Typography";
 import * as Card from "@/components/ui/Card";
 import { Col } from "@/components/layout/Col";
+import { ExternalLink } from "lucide-react";
 
 export default async function ProjectsPage() {
   console.log("ProjectsPage");
@@ -21,7 +22,19 @@ export default async function ProjectsPage() {
         {projects.map((project) => (
           <Card.Container key={project.slug} href={`/projects/${project.slug}`}>
             <Card.Content>
-              <Card.Title>{project.title}</Card.Title>
+              <div className="flex justify-between">
+                <Card.Title>{project.title}</Card.Title>
+                {project.websiteUrl && (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:scale-105 trans opacity-90 z-30"
+                  >
+                    <ExternalLink size={20} />
+                  </a>
+                )}
+              </div>
               <Card.Description className="line-clamp-none">
                 {project.description}
               </Card.Description>
