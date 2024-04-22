@@ -7,6 +7,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import { GlobalWrapper } from "@/components/GlobalWrapper";
 import dynamic from "next/dynamic";
+import { CSPostHogProvider } from "./providers";
 
 const font = Raleway({ display: "swap", subsets: ["latin"] });
 
@@ -30,20 +31,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={
-          font.className + " mih-h-screen max-w-screen overflow-x-hidden flex flex-col font-light"
-        }
-      >
-        <div className="z-20 flex-none">
-          <Header />
-        </div>
-        <GlobalWrapper>{children}</GlobalWrapper>
-        <Footer />
-        <Analytics />
-        <Particles />
-      </body>
-    </html>
+    <CSPostHogProvider>
+      <html lang="en">
+        <body
+          className={
+            font.className +
+            " mih-h-screen max-w-screen overflow-x-hidden flex flex-col font-light"
+          }
+        >
+          <div className="z-20 flex-none">
+            <Header />
+          </div>
+          <GlobalWrapper>{children}</GlobalWrapper>
+          <Footer />
+          <Analytics />
+          <Particles />
+        </body>
+      </html>
+    </CSPostHogProvider>
   );
 }
