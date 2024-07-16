@@ -1,34 +1,35 @@
 import { groq } from "next-sanity";
 import { client } from "./client";
+import { projectId } from "../env";
 
-const SANITY_SERVER =
-  "https://nq1vjp0w.api.sanity.io/v2023-08-13/data/query/portfolio-db?query=";
+// const SANITY_SERVER =
+//   `https://nq1vjp0w.api.sanity.io/v2023-08-13/data/query/portfolio-db?query=`;
 
-const sanity_fetch = (query: string) => {
-  // console.log("fetching sanity", SANITY_SERVER + query);
-  return fetch(SANITY_SERVER + encodeURIComponent(query), {
-    next: { tags: ["sanity"] },
-  })
-    .then((res) => res.json())
-    .then((res) => res.result);
-};
+// const sanity_fetch = (query: string) => {
+//   // console.log("fetching sanity", SANITY_SERVER + query);
+//   return fetch(SANITY_SERVER + encodeURIComponent(query), {
+//     next: { tags: ["sanity"] },
+//   })
+//     .then((res) => res.json())
+//     .then((res) => res.result);
+// };
 
-export function getPosts() {
-  return client.fetch(groq`*[_type == "post"]{
-    title,
-    "slug": slug.current,
-    _createdAt,
-    _id,
-    _updatedAt,
-  }`);
-}
+// export function getPosts() {
+//   return client.fetch(groq`*[_type == "post"]{
+//     title,
+//     "slug": slug.current,
+//     _createdAt,
+//     _id,
+//     _updatedAt,
+//   }`);
+// }
 
-export function getOnePost(slug: string) {
-  return sanity_fetch(`*[_type == "post" && slug.current == "${slug}"][0]`);
-}
+// export function getOnePost(slug: string) {
+//   return client.fetch(`*[_type == "post" && slug.current == "${slug}"][0]`);
+// }
 
 export function getProjects(): Promise<Project[]> {
-  return sanity_fetch(`*[_type == "project"]{
+  return client.fetch(`*[_type == "project"]{
     title,
     "slug": slug.current,
     description,
@@ -42,7 +43,7 @@ export function getProjects(): Promise<Project[]> {
 
 export async function getProject(slug: string): Promise<Project> {
   const res =
-    await sanity_fetch(`*[_type == "project" && slug.current == "${slug}"]{
+    await client.fetch(`*[_type == "project" && slug.current == "${slug}"]{
     title,
     "slug": slug.current,
     description,
@@ -56,7 +57,7 @@ export async function getProject(slug: string): Promise<Project> {
 }
 
 export function getExperiences(): Promise<Experience[]> {
-  return sanity_fetch(`*[_type == "experience"]{
+  return client.fetch(`*[_type == "experience"]{
     title,
     "slug": slug.current,
     organization,
@@ -66,50 +67,68 @@ export function getExperiences(): Promise<Experience[]> {
     } | order(dateRange.start desc)`);
 }
 
-export function getQoutes(): Promise<Qoute[]> {
-  return sanity_fetch(`*[_type == "qoute"]{
-    qoute,
+export function getQuotes(): Promise<Quote[]> {
+  return client.fetch(`*[_type == "quote"]{
+    quote,
     "slug": slug.current,
-    author[]-> { name, "slug": slug.current },
+    authors[]-> { name, "slug": slug.current },
   }`);
 }
 
 export async function getHomePageData(): Promise<{
   projects: Project[];
   experiences: Experience[];
-  qoute: Qoute;
+  quote: Quote;
 }> {
-  const res =
-    await sanity_fetch(`*[((_type == "project" || _type == "experience") && showOnHomePage) || _type == "qoute"]{
-  _type, organization,
-  title,
-  "slug": slug.current,
-  description,
-  content,
-  websiteUrl,
-  githubUrl,
-  dateRange,
-  tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
+  // const projects = await client.fetch(`[_type == "project" && showOnHomePage]`);
+  // const experiences = await client.fetch(
+  //   `[_type == "experience" && showOnHomePage]`
+  // );
+  // const quotes = await client.fetch(`[_type == "quote" && Authors]`);
 
-  qoute,
-  authors[]-> { name, "slug": slug.current },
-} | order(dateRange.start desc)
-`);
-  const projects = res.filter((x: any) => x._type == "project");
-  const experiences = res.filter((x: any) => x._type == "experience");
-  const qoutes = res.filter((x: any) => x._type == "qoute");
+  const projects = await getProjects();
+  const experiences = await getExperiences();
+  const quotes = await getQuotes();
+
+  console.log("😊❤️💕");
+  console.log(projects, experiences, quotes);
+
+  //   const res =
+  //     await client.fetch(`*[((_type == "project" || _type == "experience") && showOnHomePage) || _type == "quote"]{
+  //   _type, organization,
+  //   title,
+  //   "slug": slug.current,
+  //   description,
+  //   content,
+  //   websiteUrl,
+  //   githubUrl,
+  //   dateRange,
+  //   tags[]-> { name, icon, "slug": slug.current, iconFileName, iconScale },
+
+  //   quote,
+  //   authors[]-> { name, "slug": slug.current },
+  // } | order(dateRange.start desc)
+  // `);
+
+  // const projects = res.filter((x: any) => x._type == "project");
+  // const experiences = res.filter((x: any) => x._type == "experience");
+  // const quotes = res.filter((x: any) => x._type == "quote");
   return {
     projects,
     experiences,
-    qoute: qoutes[Math.floor(Math.random() * qoutes.length)],
+    quote: quotes[Math.floor(Math.random() * quotes.length)],
   };
 }
 
 export async function getTechItems(): Promise<Tag[]> {
-  const data = await sanity_fetch(`*[_type == "tag" && categories != null]{
+  const data = await client.fetch(`*[_type == "tag" && categories != null]{
     name, icon, "slug": slug.current, iconFileName, iconScale,
     categories[] -> { title, "slug": slug.current },
   }`);
+
+  console.log("😊");
+  console.log(data);
+
   // categorize tags by categories
   const categories: { [key: string]: Tag[] } = {};
   data.forEach((tag: Tag) => {
