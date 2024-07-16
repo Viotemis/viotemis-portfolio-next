@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for bowang-lan-portfolio on 2023-12-22T04:27:54-08:00
+# fly.toml app configuration file generated for viotemis-portfolio on 2023-12-22T04:27:54-08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "bowang-lan-portfolio"
+app = "viotemis-portfolio"
 primary_region = "sea"
 
 [build]
