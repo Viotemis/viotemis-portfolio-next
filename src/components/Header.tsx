@@ -78,7 +78,7 @@ export default function Header() {
           router.push("/");
         }}
       >
-        Bowang Lan
+        Viotemis
       </span>
       <div className="flex-1"></div>
       <div>

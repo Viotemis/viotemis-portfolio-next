@@ -54,8 +54,8 @@ interface Author {
   slug: string;
 }
 
-interface Qoute {
-  qoute: string;
+interface Quote {
+  quote: string;
   slug: string;
   authors: Author[];
 }

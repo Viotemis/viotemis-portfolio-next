@@ -16,7 +16,7 @@ export default function Footer() {
     >
       <div>
         <span className="text-sm text-gray-300">
-          &copy; {new Date().getFullYear()} Bowang Lan. All rights reserved.
+          &copy; {new Date().getFullYear()} Justin Danner. All rights reserved.
         </span>
       </div>
       <SocialMedia size="sm" />

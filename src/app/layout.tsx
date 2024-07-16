@@ -16,9 +16,9 @@ const Particles = dynamic(() => import("@/components/Particles"), {
 });
 
 export const metadata = {
-  title: "Bowang Lan",
+  title: "Viotemis",
   description:
-    "Bowang Lan is a software engineer based in Seattle, WA and a student at University of Washington.",
+    "Justin Danner is a Senior Frontend Developer based in Oregon, USA",
   visualViewport: {
     width: "device-width",
     initialScale: 1.0,

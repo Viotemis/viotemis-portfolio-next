@@ -7,13 +7,14 @@ import { SectionContainer } from "@/components/ui/Container";
 import { ProjectCardList } from "@/components/ui/Card";
 import { ExperienceList } from "@/components/ui/Timeline";
 import Link from "next/link";
-import { Qoute } from "@/components/ui/Qoute";
+import { Quote } from "@/components/ui/Quote";
 import { AboutMe } from "@/components/AboutMe";
 import { TechSection } from "@/components/TechSection";
 
 export default async function Home() {
   const data = await getHomePageData();
   const techItems = await getTechItems();
+
   console.log("render home page");
   return (
     <DefaultLayout>
@@ -21,15 +22,13 @@ export default async function Home() {
         <div className="flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-4 md:text-4xl">
           <h1 className="text-[2rem] text-center tracking-normal sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.5rem] 2xl:text-[4rem] sm:tracking-wider">
             Hello, {"I'm "}
-            <span className="font-bold primary-gradient">
-              Bowang (Jeffrey) Lan
-            </span>
+            <span className="font-bold primary-gradient">Justin Danner</span>
           </h1>
           <div className="text-base tracking-wide text-center lg:pt-3 sm:text-xl md:text-2xl text-slate-300">
-            A full-stack software engineer and data scientist
+            A Senior Frontend Developer
           </div>
           <div className="text-sm italic font-bold tracking-wide text-center md:text-base lg:text-lg primary-gradient-2">
-            Actively looking for full-time SDE positions starting in June 2024!
+            Actively looking for full-time positions starting in June 2024!
           </div>
           <div className="flex items-center pt-3 md:gap-4">
             {/* <ContactMeButton /> */}
@@ -72,9 +71,9 @@ export default async function Home() {
       </SectionContainer>
 
       {/* quote */}
-      {data.qoute && (
+      {data.quote && (
         <SectionContainer>
-          <Qoute qoute={data.qoute} />
+          <Quote quote={data.quote} />
         </SectionContainer>
       )}
     </DefaultLayout>

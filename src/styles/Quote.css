@@ -1,4 +1,4 @@
-.qoute-container {
+.quote-container {
   font-family: Didot, "Bodoni MT", "Noto Serif Display", "URW Palladio L", P052,
     Sylfaen, serif;
   background: rgba(var(--primary-800), 0.7);
@@ -7,7 +7,7 @@
   perspective: 1000px;
 }
 
-.qoute-container::before {
+.quote-container::before {
   content: "";
   --color: rgba(var(--primary-600), 0.7);
   --size: 18px;
@@ -23,6 +23,6 @@
   box-sizing: content-box;
 }
 
-.qoute-container:hover {
+.quote-container:hover {
   transform: rotateX(10deg) rotateY(10deg);
 }
